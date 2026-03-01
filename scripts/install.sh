@@ -25,33 +25,69 @@ draw_banner () {
     echo -e "${C_BORDER}${C_BOLD}"
     echo "  ╔══════════════════════════════════════════════════════════╗"
     echo "  ║                                                          ║"
-    echo "  ║        ██╗  ██╗██╗   ██╗██████╗ ██████╗                ║"
-    echo "  ║        ██║  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗               ║"
-    echo "  ║        ███████║ ╚████╔╝ ██████╔╝██████╔╝               ║"
-    echo "  ║        ██╔══██║  ╚██╔╝  ██╔═══╝ ██╔══██╗               ║"
-    echo "  ║        ██║  ██║   ██║   ██║      ██║  ██║               ║"
-    echo "  ║        ╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═╝  ╚═╝               ║"
+    echo "  ║        ██╗  ██╗██╗   ██╗██████╗ ██████╗                  ║"
+    echo "  ║        ██║  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗                 ║"
+    echo "  ║        ███████║ ╚████╔╝ ██████╔╝██████╔╝                 ║"
+    echo "  ║        ██╔══██║  ╚██╔╝  ██╔═══╝ ██╔══██╗                 ║"
+    echo "  ║        ██║  ██║   ██║   ██║     ██║  ██║                 ║"
+    echo "  ║        ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝                 ║"
     echo "  ║                                                          ║"
-    echo "  ║          Rose x Grey — Hyprland Rice Installer          ║"
-    echo "  ║                     by Zagot                            ║"
+    echo "  ║          Rose x Grey — Hyprland Rice Installer           ║"
+    echo "  ║                     by Zagot                             ║"
     echo "  ║                                                          ║"
     echo "  ╚══════════════════════════════════════════════════════════╝"
     echo -e "${C_RESET}"
     echo -e "${C_DIM_COLOR}${C_DIM}  Arch Linux · Hyprland · Waybar · Kitty · Rofi · Dunst${C_RESET}\n"
 }
 
+# ─── Install Yay ─────────────────────────────────────────────────────────────
+install_yay () {
+    info_print "Installing yay from AUR..."
+
+    # Check for git and base-devel
+    if ! command -v git &>/dev/null; then
+        info_print "Installing git..."
+        pacman -S --needed --noconfirm git || { error_print "Failed to install git"; exit 1; }
+    fi
+
+    pacman -S --needed --noconfirm base-devel || { error_print "Failed to install base-devel"; exit 1; }
+
+    # Clone and build yay
+    local tmp_dir
+    tmp_dir=$(mktemp -d)
+    git clone https://aur.archlinux.org/yay.git "$tmp_dir/yay" || {
+        error_print "Failed to clone yay — check your internet connection"
+        rm -rf "$tmp_dir"
+        exit 1
+    }
+
+    cd "$tmp_dir/yay" || exit 1
+
+    # makepkg can't run as root
+    if [[ $EUID -eq 0 ]]; then
+        # Create temp user to build
+        useradd -m _yay_build 2>/dev/null || true
+        chown -R _yay_build:_yay_build "$tmp_dir"
+        su -c "cd $tmp_dir/yay && makepkg -si --noconfirm" _yay_build
+        userdel -r _yay_build 2>/dev/null || true
+    else
+        makepkg -si --noconfirm
+    fi
+
+    cd - &>/dev/null || true
+    rm -rf "$tmp_dir"
+
+    if command -v yay &>/dev/null; then
+        ok_print "yay installed successfully"
+    else
+        error_print "yay installation failed — install manually and rerun"
+        exit 1
+    fi
+}
+
 # ─── Dependency Check ─────────────────────────────────────────────────────────
 check_deps () {
     section_print "Checking Dependencies"
-
-    local missing=()
-
-    # Check yay
-    if ! command -v yay &>/dev/null; then
-        error_print "yay not found — install yay first"
-        exit 1
-    fi
-    ok_print "yay found"
 
     # Check if running on Arch
     if ! command -v pacman &>/dev/null; then
@@ -59,6 +95,21 @@ check_deps () {
         exit 1
     fi
     ok_print "Arch Linux confirmed"
+
+    # Check yay
+    if ! command -v yay &>/dev/null; then
+        error_print "yay not found"
+        echo -ne "\n${C_ACTIVE}${C_BOLD}  Install yay automatically? [y/N]: ${C_RESET}"
+        read -r answer
+        if [[ "$answer" =~ ^[Yy]$ ]]; then
+            install_yay
+        else
+            error_print "yay is required — install it manually and rerun"
+            exit 1
+        fi
+    else
+        ok_print "yay found"
+    fi
 }
 
 # ─── Package Installation ─────────────────────────────────────────────────────
