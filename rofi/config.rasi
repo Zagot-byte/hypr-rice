@@ -1,0 +1,10 @@
+configuration {
+    modi:              "drun,run,window,filebrowser";
+    show-icons:        true;
+    icon-theme:        "Papirus-Dark";
+    terminal:          "kitty";
+    drun-display-format: "{name}";
+    window-format:     "{w} · {c} · {t}";
+}
+
+@theme "rose-grey"

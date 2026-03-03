@@ -1,0 +1,104 @@
+* {
+    font-family: "Symbols Nerd Font", "JetBrains Mono";
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+window#waybar {
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+    color: #e0e0e0;
+}
+
+/* ── All modules base ── */
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#pulseaudio,
+#bluetooth,
+#network,
+#tray {
+    background: transparent;
+    padding: 0 10px;
+    margin: 5px 2px;
+    color: #9e9e9e;
+    font-size: 15px;
+}
+
+/* Divider between right modules */
+#cpu, #memory, #pulseaudio, #bluetooth, #network {
+    border-right: 1px solid #2a2a2a;
+    padding: 0 12px;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+    padding: 0 6px;
+    border-right: 1px solid #2a2a2a;
+}
+
+#workspaces button {
+    background: transparent;
+    color: #424242;
+    padding: 0 4px;
+    min-width: 20px;
+    font-size: 9px;
+    border-radius: 2px;
+    transition: all 0.1s ease;
+}
+
+#workspaces button.active {
+    color: #e55b5b;
+    font-size: 10px;
+}
+
+#workspaces button.occupied {
+    color: #707070;
+}
+
+#workspaces button:hover {
+    background: #2a2a2a;
+    color: #ff7575;
+}
+
+/* ── Clock ── */
+#clock {
+    color: #e0e0e0;
+    font-family: "JetBrains Mono";
+    font-size: 12px;
+    padding: 0 14px;
+}
+
+/* ── Status icons ── */
+#cpu         { color: #707070; }
+#memory      { color: #707070; }
+#pulseaudio  { color: #707070; }
+#bluetooth   { color: #424242; }
+#network     { color: #707070; }
+
+#cpu.warning, #memory.warning       { color: #e55b5b; }
+#cpu.critical, #memory.critical     { color: #aa0c14; }
+#pulseaudio.muted                   { color: #424242; }
+#bluetooth.connected                { color: #e55b5b; }
+#network.disconnected               { color: #424242; }
+
+/* hover on all right modules */
+#cpu:hover, #memory:hover,
+#pulseaudio:hover, #bluetooth:hover,
+#network:hover, #clock:hover {
+    color: #e0e0e0;
+    transition: color 0.1s ease;
+}
+
+/* ── Tray ── */
+#tray {
+    padding: 0 8px;
+    font-size: 13px;
+}
+
+#tray > .passive { -gtk-icon-effect: dim; }
