@@ -26,11 +26,15 @@ window {
     border-color:     @rose;
     border-radius:    8px;
     width:            520px;
+    location:		  north;
+    anchor:           north;
+    x-offset:         0;
+    y-offset:         0;
 }
 
 mainbox {
     background-color: transparent;
-    children:         [ inputbar, listview ];
+    children:         [ inputbar,mode-switcher, listview ];
     padding:          0;
 }
 
@@ -102,3 +106,23 @@ message {
     padding:          10px 14px;
 }
 textbox { text-color: @text-dim; }
+mode-switcher {
+    background-color: @bg-alt;
+    border:           1px solid;
+    border-color:     @surface;
+    spacing:          0;
+}
+
+button {
+    background-color: @bg-alt;
+    text-color:       @text-dim;
+    padding:          6px 12px;
+    border-radius:    0;
+}
+
+button selected {
+    background-color: @rose-overlay;
+    text-color:       @rose;
+    border:           0 0 2px 0;
+    border-color:     @rose;
+}

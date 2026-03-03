@@ -1,0 +1,13 @@
+# ── Fish Config ───────────────────────────────────────
+if status is-interactive
+    # Greeting
+    fastfetch 2>/dev/null || neofetch 2>/dev/null
+
+    # Useful aliases
+    alias ls    'ls --color=auto'
+    alias ll    'ls -lah --color=auto'
+    alias grep  'grep --color=auto'
+    alias hypr  'cd ~/.config/hypr'
+    alias rice  'cd ~/.config/hypr-rice 2>/dev/null || cd ~/.config/hypr'
+    alias reload 'hyprctl reload'
+end

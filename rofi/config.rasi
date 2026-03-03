@@ -1,10 +1,14 @@
 configuration {
-    modi:              "drun,run,window,filebrowser";
+    modi:              "drun,run,calc:~/.config/rofi/scripts/calc.sh";
     show-icons:        true;
     icon-theme:        "Papirus-Dark";
     terminal:          "kitty";
     drun-display-format: "{name}";
     window-format:     "{w} · {c} · {t}";
+    location:          1;
+    anchor:            1;
+    xoffset:           0;
+    yoffset:           0;
+    cycle:             true;
 }
-
 @theme "rose-grey"

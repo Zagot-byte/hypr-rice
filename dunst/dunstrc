@@ -1,58 +1,75 @@
 [global]
-    follow = mouse
-    indicate_hidden = yes
+    # ── Display ──────────────────────────────────────
+    follow             = mouse
+    width              = 320
+    height             = 100
+    origin             = top-right
+    offset             = 12x12
+    scale              = 0
 
-    offset = 10x10
-
+    # ── Layout ───────────────────────────────────────
     notification_height = 0
+    separator_height   = 1
+    padding            = 12
+    horizontal_padding = 14
+    text_icon_padding  = 10
+    frame_width        = 1
+    frame_color        = "#e55b5b"
+    separator_color    = "#424242"
+    corner_radius      = 8
+    gap_size           = 6
 
-    separator_height = 2
-
-    padding = 8
-    horizontal_padding = 8
-    text_icon_padding = 0
-    frame_width = 2
-
-    frame_color = "#a6adc8"
-    separator_color = frame
-
-    sort = yes
-    idle_threshold = 120
-    font = monospace 10
-    line_height = 0
-    markup = full
-    alignment = left
+    # ── Text ─────────────────────────────────────────
+    font               = JetBrains Mono 10
+    line_height        = 2
+    markup             = full
+    format             = "<b>%s</b>\n%b"
+    alignment          = left
     vertical_alignment = center
-    show_age_threshold = 60
-    word_wrap = yes
-    stack_duplicates = true
+    word_wrap          = yes
+    show_age_threshold = 30
+    show_indicators    = no
+
+    # ── Icons ────────────────────────────────────────
+    icon_theme         = Papirus-Dark
+    enable_recursive_icon_lookup = true
+    min_icon_size      = 32
+    max_icon_size      = 48
+
+    # ── Behaviour ────────────────────────────────────
+    sort               = yes
+    stack_duplicates   = true
     hide_duplicate_count = false
+    idle_threshold     = 120
+    sticky_history     = yes
+    history_length     = 20
+    dmenu              = rofi -dmenu -p dunst
+    browser            = brave --new-tab
+    title              = Dunst
+    class              = Dunst
 
-    show_indicators = yes
-
-    min_icon_size = 0
-    max_icon_size = 64
-
-    icon_path = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/actions/:/usr/share/icons/Papirus-Dark/16x16/animations/:/usr/share/icons/Papirus-Dark/16x16/apps/:/usr/share/icons/Papirus-Dark/16x16/categories/:/usr/share/icons/Papirus-Dark/16x16/emblems/:/usr/share/icons/Papirus-Dark/16x16/emotes/:/usr/share/icons/Papirus-Dark/16x16/devices/mimetypes:/usr/share/icons/Papirus-Dark/16x16/panel/:/usr/share/icons/Papirus-Dark/16x16/places/
-
-    dmenu = /usr/bin/wofi -p dunst:
-    browser = /usr/bin/firefox --new-tab
-
-    title = Dunst
-    class = Dunst
-
-    corner_radius = 10
-    timeout = 5
+    # ── Mouse ────────────────────────────────────────
+    mouse_left_click   = close_current
+    mouse_right_click  = do_action
+    mouse_middle_click = close_all
 
 [urgency_low]
-    background = "#1e1e2e"
-    foreground = "#CDD6F4"
+    background         = "#1a1a1a"
+    foreground         = "#9e9e9e"
+    frame_color        = "#424242"
+    timeout            = 3
+    icon               = dialog-information
 
 [urgency_normal]
-    background = "#1e1e2e"
-    foreground = "#CDD6F4"
+    background         = "#212121"
+    foreground         = "#e0e0e0"
+    frame_color        = "#e55b5b"
+    timeout            = 5
+    icon               = dialog-information
 
 [urgency_critical]
-    background = "#1e1e2e"
-    foreground = "#CDD6F4"
-    frame_color = "#FAB387"
+    background         = "#3a1f1f"
+    foreground         = "#ff7575"
+    frame_color        = "#aa0c14"
+    timeout            = 0
+    icon               = dialog-warning
