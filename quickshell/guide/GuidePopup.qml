@@ -72,6 +72,7 @@ Item {
         currentTab = prev;
         event.accepted = true;
     }
+/*
     Keys.onLeftPressed: {
         if (currentTab === 3) { 
             if (selectedModuleIndex > 0) {
@@ -98,6 +99,7 @@ Item {
         }
     }
     Keys.onEnterPressed: { Keys.onReturnPressed(event); }
+*/
 
     MatugenColors { id: _theme }
     // -------------------------------------------------------------------------
@@ -336,8 +338,8 @@ Item {
     // -------------------------------------------------------------------------
     property int currentTab: 1
     property int selectedModuleIndex: 0
-    property var tabNames: ["Settings", "System", "Resources", "Modules", "Matugen", "About"]
-    property var tabIcons: ["", "", "󰣖", "󰣆", "󰏘", ""]
+    property var tabNames: ["Settings", "System", "Resources", /*"Modules", "Matugen",*/ "About"]
+    property var tabIcons: ["", "", "󰣖", /*"󰣆", "󰏘",*/ ""]
 
     property real introBase: 0.0
     property real introSidebar: 0.0
@@ -734,7 +736,7 @@ Item {
                         hoverEnabled: true
                         cursorShape: Qt.PointingHandCursor
                         onClicked: {
-                            let cmd = "if command -v kitty >/dev/null 2>&1; then kitty --hold bash -c 'eval \"$(curl -fsSL https://raw.githubusercontent.com/ilyamiro/imperative-dots/master/install.sh)\"'; else ${TERM:-xterm} -hold -e bash -c 'eval \"$(curl -fsSL https://raw.githubusercontent.com/ilyamiro/imperative-dots/master/install.sh)\"'; fi";
+                            let cmd = "if command -v kitty >/dev/null 2>&1; then kitty --hold bash -c 'eval \"$(curl -fsSL https://raw.githubusercontent.com/zagot-byte/imperative-dots/master/install.sh)\"'; else ${TERM:-xterm} -hold -e bash -c 'eval \"$(curl -fsSL https://raw.githubusercontent.com/zagot-byte/imperative-dots/master/install.sh)\"'; fi";
                             Quickshell.execDetached(["bash", "-c", cmd]);
                         }
                     }
@@ -1090,7 +1092,7 @@ ListElement { pkg: "Kanagawa Dragon"; role: "Color Palette"; icon: "󰏘"; clr: 
                             anchors.fill: parent
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: Quickshell.execDetached(["xdg-open", "https://github.com/ilyamiro/nixos-configuration"]) 
+                            onClicked: Quickshell.execDetached(["xdg-open", "https://github.com/Zagot-byte"]) 
                         }
                     }
 
@@ -1102,8 +1104,8 @@ ListElement { pkg: "Kanagawa Dragon"; role: "Color Palette"; icon: "󰏘"; clr: 
                         Repeater {
                             model: [ 
                                 { name: "Settings", icon: "", color: "mauve", targetTab: 0, isToggle: true }, 
-                                { name: "Resources", icon: "󰣖", color: "green", targetTab: 2, isToggle: false }, 
-                                { name: "Modules", icon: "󰣆", color: "blue", targetTab: 3, isToggle: false } 
+                                { name: "Resources", icon: "󰣖", color: "green", targetTab: 2, isToggle: false } 
+                                /* { name: "Modules", icon: "󰣆", color: "blue", targetTab: 3, isToggle: false } */
                             ]
                             
                             Rectangle {
@@ -1608,12 +1610,13 @@ ListElement { pkg: "Kanagawa Dragon"; role: "Color Palette"; icon: "󰏘"; clr: 
                 }
             }
 
+            /*
             // ------------------------------------------
             // TAB 3: MODULES
             // ------------------------------------------
             Item {
                 anchors.fill: parent
-                visible: root.currentTab === 3
+                visible: false // root.currentTab === 3
                 opacity: visible ? 1.0 : 0.0
                 property real slideY: visible ? 0 : root.s(10)
                 
@@ -1801,13 +1804,15 @@ ListElement { pkg: "Kanagawa Dragon"; role: "Color Palette"; icon: "󰏘"; clr: 
                     }
                 }
             }
+            */
 
+            /*
             // ------------------------------------------
             // TAB 4: MATUGEN ENGINE
             // ------------------------------------------
             Item {
                 anchors.fill: parent
-                visible: root.currentTab === 4
+                visible: false // root.currentTab === 4
                 opacity: visible ? 1.0 : 0.0
                 property real slideY: visible ? 0 : root.s(10)
                 
@@ -2030,13 +2035,14 @@ ListElement { pkg: "Kanagawa Dragon"; role: "Color Palette"; icon: "󰏘"; clr: 
                     }
                 }
             }
+            */
 
             // ------------------------------------------
             // TAB 5: ABOUT
             // ------------------------------------------
             Item {
                 anchors.fill: parent
-                visible: root.currentTab === 5
+                visible: root.currentTab === 3 // was 5
                 opacity: visible ? 1.0 : 0.0
                 property real slideY: visible ? 0 : root.s(10)
                 
