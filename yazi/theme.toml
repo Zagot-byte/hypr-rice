@@ -1,0 +1,11 @@
+# Yazi — Kanagawa Dragon theme
+# TODO: fill in full theme — placeholder
+[manager]
+cwd = { fg = "#c4746e" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+
+[filetype]
+rules = []

@@ -1,0 +1,128 @@
+/* Kanagawa Dragon — Rofi Theme */
+
+* {
+    bg:          #181616;
+    bg-alt:      #1d1c19;
+    surface:     #282727;
+    text:        #c5c9c5;
+    text-dim:    #9e9b93;
+    rose:        #c4746e;
+    rose-light:  #c4746e;
+    rose-deep:   #c4746e;
+    rose-overlay:#282727;
+
+    background-color: transparent;
+    text-color:       @text;
+    font:             "JetBrains Mono 11";
+    border:           0;
+    margin:           0;
+    padding:          0;
+    spacing:          0;
+}
+
+window {
+    background-color: @bg;
+    border:           2px solid;
+    border-color:     @rose;
+    border-radius:    8px;
+    width:            520px;
+    location:		  north;
+    anchor:           north;
+    x-offset:         0;
+    y-offset:         0;
+}
+
+mainbox {
+    background-color: transparent;
+    children:         [ inputbar,mode-switcher, listview ];
+    padding:          0;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    8px 8px 0 0;
+    padding:          10px 14px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+    border-bottom:    1px solid;
+    border-color:     @surface;
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @rose;
+    font:             "JetBrains Mono Bold 11";
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @text;
+    placeholder:      "Search…";
+    placeholder-color: @text-dim;
+}
+
+listview {
+    background-color: transparent;
+    padding:          6px;
+    spacing:          2px;
+    lines:            8;
+    scrollbar:        false;
+}
+
+element {
+    background-color: transparent;
+    border-radius:    6px;
+    padding:          8px 12px;
+    spacing:          10px;
+    children:         [ element-icon, element-text ];
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @text;
+}
+
+element selected.normal {
+    background-color: @rose-overlay;
+    text-color:       @rose-light;
+    border:           1px solid;
+    border-color:     @rose;
+}
+
+element-icon {
+    size:             1.2em;
+    background-color: transparent;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}
+
+message {
+    background-color: @bg-alt;
+    padding:          10px 14px;
+}
+textbox { text-color: @text-dim; }
+mode-switcher {
+    background-color: @bg-alt;
+    border:           1px solid;
+    border-color:     @surface;
+    spacing:          0;
+}
+
+button {
+    background-color: @bg-alt;
+    text-color:       @text-dim;
+    padding:          6px 12px;
+    border-radius:    0;
+}
+
+button selected {
+    background-color: @rose-overlay;
+    text-color:       @rose;
+    border:           0 0 2px 0;
+    border-color:     @rose;
+}

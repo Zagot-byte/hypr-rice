@@ -11,4 +11,4 @@ configuration {
     yoffset:           0;
     cycle:             true;
 }
-@theme "rose-grey"
+@theme "kanagawa-dragon"

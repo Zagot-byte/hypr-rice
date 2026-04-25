@@ -1,87 +1,64 @@
 {
     "layer": "top",
-    "position": "top",
-    "height": 36,
+    "position": "left",
+    "width": 50,
     "spacing": 0,
     "exclusive": true,
     "fixed-center": true,
+    "margin-top": 50,
+    "margin-bottom": 50,
+    "margin-left": 8,
 
+    "modules-left": [
+        "cpu",
+        "memory"
+    ],
     "modules-center": [
         "hyprland/workspaces"
     ],
-    "modules-left": [
-        "clock"
-    ],
     "modules-right": [
-        "cpu",
-        "memory",
-        "pulseaudio",
-        "bluetooth",
+        "clock",
         "network",
-        "tray"
+        "bluetooth"
     ],
 
+    "cpu": {
+        "format": "󰻠",
+        "interval": 2,
+        "tooltip-format": "CPU: {usage}%"
+    },
+    "memory": {
+        "format": "󰍛",
+        "interval": 2,
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
+    },
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
             "active": "󰮯",
-            "default": "󰊠"
+            "default": "󰊠",
+            "urgent": "󰊠"
         },
         "persistent-workspaces": {
             "*": 10
-        }
-    },
-
-    "clock": {
-        "format": "󰥔  {:%H:%M}",
-        "format-alt": "󰃭  {:%a %d %b}",
-        "tooltip-format": "<tt>{calendar}</tt>"
-    },
-
-    "cpu": {
-        "format": "󰻠 {usage}%",
-        "interval": 2,
-        "tooltip": false
-    },
-
-    "memory": {
-        "format": "󰍛 {percentage}%",
-        "interval": 2,
-        "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
-    },
-
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-muted": "󰝟",
-        "format-icons": {
-            "default": ["󰕿", "󰖀", "󰕾"]
         },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
-        "tooltip-format": "{volume}% — {desc}"
+        "on-click": "activate"
     },
-
-    "bluetooth": {
-        "format": "󰂯",
-        "format-connected": "󰂱",
-        "format-disabled": "󰂲",
-        "on-click": "bluetoothctl power on",
-        "tooltip-format": "{controller_alias}\n{num_connections} connected",
-        "tooltip-format-connected": "{device_alias}"
+    "clock": {
+        "format": "{:%H\n%M}",
+        "tooltip-format": "{:%A %d %B %Y}"
     },
-
     "network": {
         "format-wifi": "󰤨",
         "format-ethernet": "󰈀",
         "format-disconnected": "󰤭",
         "tooltip-format-wifi": "{essid} {signalStrength}%",
-        "tooltip-format-ethernet": "{ifname} {ipaddr}",
         "tooltip-format-disconnected": "Disconnected"
     },
-
-    "tray": {
-        "icon-size": 14,
-        "spacing": 8
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱",
+        "format-disabled": "󰂲",
+        "tooltip-format-connected": "{device_alias}"
     }
 }

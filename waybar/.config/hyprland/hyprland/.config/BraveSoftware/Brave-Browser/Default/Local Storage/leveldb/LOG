@@ -1,0 +1,6 @@
+2026/04/25-11:56:41.749 5 Reusing MANIFEST /home/hypr/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/MANIFEST-000001
+2026/04/25-11:56:41.751 5 Recovering log #9
+2026/04/25-11:56:41.752 5 Reusing old log /home/hypr/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/000009.log 
+2026/04/25-11:57:07.590 5 Level-0 table #13: started
+2026/04/25-11:57:07.593 5 Level-0 table #13: 16562 bytes OK
+2026/04/25-11:57:07.595 5 Delete type=0 #9

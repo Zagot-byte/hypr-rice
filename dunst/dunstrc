@@ -14,13 +14,13 @@
     horizontal_padding = 14
     text_icon_padding  = 10
     frame_width        = 1
-    frame_color        = "#e55b5b"
-    separator_color    = "#424242"
+    frame_color        = "#c4746e"
+    separator_color    = "#282727"
     corner_radius      = 8
     gap_size           = 6
 
     # ── Text ─────────────────────────────────────────
-    font               = JetBrains Mono 10
+    font               = JetBrains Mono Nerd Font 11
     line_height        = 2
     markup             = full
     format             = "<b>%s</b>\n%b"
@@ -54,22 +54,22 @@
     mouse_middle_click = close_all
 
 [urgency_low]
-    background         = "#1a1a1a"
-    foreground         = "#9e9e9e"
-    frame_color        = "#424242"
+    background         = "#1d1c19"
+    foreground         = "#c5c9c5"
+    frame_color        = "#8a9a7b"
     timeout            = 3
     icon               = dialog-information
 
 [urgency_normal]
-    background         = "#212121"
-    foreground         = "#e0e0e0"
-    frame_color        = "#e55b5b"
+    background         = "#1d1c19"
+    foreground         = "#c5c9c5"
+    frame_color        = "#c4746e"
     timeout            = 5
     icon               = dialog-information
 
 [urgency_critical]
-    background         = "#3a1f1f"
-    foreground         = "#ff7575"
-    frame_color        = "#aa0c14"
+    background         = "#1d1c19"
+    foreground         = "#c5c9c5"
+    frame_color        = "#c4746e"
     timeout            = 0
     icon               = dialog-warning

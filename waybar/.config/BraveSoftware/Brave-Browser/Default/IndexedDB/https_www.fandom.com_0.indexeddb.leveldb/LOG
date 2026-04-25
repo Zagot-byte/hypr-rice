@@ -1,0 +1,6 @@
+2026/04/25-12:32:52.022 720 Creating DB /home/hypr/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.fandom.com_0.indexeddb.leveldb since it was missing.
+2026/04/25-12:32:52.023 720 Reusing MANIFEST /home/hypr/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_www.fandom.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/04/25-12:42:54.700 723 Level-0 table #5: started
+2026/04/25-12:42:54.701 723 Level-0 table #5: 3086 bytes OK
+2026/04/25-12:42:54.702 723 Delete type=0 #3
+2026/04/25-12:42:54.702 723 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
