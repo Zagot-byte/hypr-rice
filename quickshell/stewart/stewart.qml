@@ -18,7 +18,7 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
     
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
     readonly property color blue: _theme.blue
     readonly property color sapphire: _theme.sapphire

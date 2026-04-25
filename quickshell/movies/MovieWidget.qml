@@ -25,10 +25,10 @@ Item {
     readonly property color surface0: _theme.surface0
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
-    readonly property color mauve: _theme.mauve || "#cba6f7"
+    readonly property color mauve: _theme.teal || "#cba6f7"
     readonly property color blue: _theme.blue || "#89b4fa"
     readonly property color green: _theme.green || "#a6e3a1"
-    readonly property color red: _theme.red || "#f38ba8"
+    readonly property color red: _theme.teal || "#f38ba8"
     // --- STATE MANAGEMENT ---
     property string currentView: "search" // "search" or "series"
     property string mediaType: "movie" // "movie" or "tv"
@@ -1053,7 +1053,7 @@ Item {
         }
         Rectangle {
             anchors.fill: parent; radius: window.s(10)
-            color: window.mediaType === "tv" ? window.blue : window.mauve
+            color: window.mediaType === "tv" ? window.blue : window.teal
             opacity: parent.isHovered ? 0.3 : 0
             Behavior on opacity { NumberAnimation { duration: 200 } }
         }
@@ -1199,7 +1199,7 @@ Item {
                             Rectangle {
                                 id: tabHighlight
                                 width: parent.width / 2 - window.s(4); height: parent.height - window.s(8)
-                                y: window.s(4); radius: window.s(8); color: window.mediaType === "movie" ? window.mauve : window.blue; z: 0
+                                y: window.s(4); radius: window.s(8); color: window.mediaType === "movie" ? window.teal : window.blue; z: 0
                                 property real targetX: window.mediaType === "movie" ? window.s(4) : (parent.width / 2)
                                 property real actualX: targetX
                                 Behavior on actualX { NumberAnimation { duration: 300; easing.type: Easing.OutQuart } }
@@ -1327,7 +1327,7 @@ Item {
                                     var endRad = startRad + 1.7 * Math.PI
                                     ctx.beginPath()
                                     ctx.arc(cx, cy, r, startRad, endRad)
-                                    ctx.strokeStyle = window.mauve
+                                    ctx.strokeStyle = window.teal
                                     ctx.lineWidth = 3
                                     ctx.lineCap = "round"
                                     ctx.stroke()
@@ -1407,7 +1407,7 @@ Item {
                                         }
                                         Rectangle {
                                             anchors.fill: parent; radius: window.s(8)
-                                            color: window.mediaType === "tv" ? window.blue : window.mauve
+                                            color: window.mediaType === "tv" ? window.blue : window.teal
                                             opacity: parent.parent.parent.isActive ? 0.2 : 0
                                             Behavior on opacity { NumberAnimation { duration: 200 } }
                                         }
@@ -1535,7 +1535,7 @@ Item {
                         delegate: Rectangle {
                             width: seasonLabelText.width + window.s(28); height: window.s(38); radius: window.s(10)
                             property bool isActive: window.currentSeason === model.seasonNum
-                            color: isActive ? (window.mediaType === "tv" ? window.blue : window.mauve) : window.surface0
+                            color: isActive ? (window.mediaType === "tv" ? window.blue : window.teal) : window.surface0
                             border.color: isActive ? color : window.surface1; border.width: 1
                             Behavior on color { ColorAnimation { duration: 280; easing.type: Easing.OutQuart } }
                             Behavior on border.color { ColorAnimation { duration: 280; easing.type: Easing.OutQuart } }
@@ -1692,7 +1692,7 @@ Item {
                                     : window.checkingState === "found"    ? "Stream Ready!"
                                     :                                        "No Streams Found"
                                 color: window.checkingState === "found"      ? window.green
-                                     : window.checkingState === "failed_all" ? window.red
+                                     : window.checkingState === "failed_all" ? window.teal
                                      :                                          window.text
                                 font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(17)
                                 Behavior on color { ColorAnimation { duration: 300 } }
@@ -1725,13 +1725,13 @@ Item {
                             color: {
                                 if (model.status === "checking") return Qt.rgba(window.blue.r,  window.blue.g,  window.blue.b,  0.12)
                                 if (model.status === "success")  return Qt.rgba(window.green.r, window.green.g, window.green.b, 0.12)
-                                if (model.status === "failed")   return Qt.rgba(window.red.r,   window.red.g,   window.red.b,   0.07)
+                                if (model.status === "failed")   return Qt.rgba(window.teal.r,   window.teal.g,   window.teal.b,   0.07)
                                 return window.surface0
                             }
                             border.color: {
                                 if (model.status === "checking") return window.blue
                                 if (model.status === "success")  return window.green
-                                if (model.status === "failed")   return Qt.rgba(window.red.r, window.red.g, window.red.b, 0.3)
+                                if (model.status === "failed")   return Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.3)
                                 return window.surface1
                             }
                             border.width: (model.status === "checking" || model.status === "success") ? 2 : 1
@@ -1744,7 +1744,7 @@ Item {
                                 Text {
                                     text: "★"
                                     font.pixelSize: window.s(13)
-                                    color: window.mauve
+                                    color: window.teal
                                     opacity: (window.sourcePrefs[window.pendingMedia.imdbId || ""] || "") === model.name ? 1 : 0
                                     Behavior on opacity { NumberAnimation { duration: 200 } }
                                     Layout.preferredWidth: window.s(16)
@@ -1754,7 +1754,7 @@ Item {
                                     font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(14)
                                     color: model.status === "checking" ? window.blue
                                          : model.status === "success"  ? window.green
-                                         : model.status === "failed"   ? Qt.rgba(window.red.r, window.red.g, window.red.b, 0.7)
+                                         : model.status === "failed"   ? Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.7)
                                          :                                window.text
                                     Layout.fillWidth: true
                                     Behavior on color { ColorAnimation { duration: 200 } }
@@ -1797,7 +1797,7 @@ Item {
                                     }
                                     Text {
                                         anchors.centerIn: parent
-                                        text: "✗"; color: Qt.rgba(window.red.r, window.red.g, window.red.b, 0.7)
+                                        text: "✗"; color: Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.7)
                                         font.weight: Font.Bold; font.pixelSize: window.s(14)
                                         visible: model.status === "failed"
                                     }

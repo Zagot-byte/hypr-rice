@@ -413,7 +413,7 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
     readonly property color overlay0: _theme.overlay0
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
     readonly property color blue: _theme.blue
     readonly property color sapphire: _theme.sapphire
@@ -421,7 +421,7 @@ Item {
     readonly property color green: _theme.green
     readonly property color peach: _theme.peach
     readonly property color yellow: _theme.yellow
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
 
     property int initialWorkspaceCount: 8 
     property real setUiScale: 1.0
@@ -916,7 +916,7 @@ Item {
                                 Text {
                                     anchors.centerIn: parent
                                     text: "󰑊"
-                                    font.family: "Iosevka Nerd Font"
+                                    font.family: "JetBrainsMono Nerd Font"
                                     font.pixelSize: root.s(18)
                                     color: box0.isActive ? root.base : root.peach
                                     Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
@@ -993,7 +993,7 @@ Item {
                                 Layout.alignment: Qt.AlignVCenter
                                 Text {
                                     anchors.centerIn: parent; text: "󰋖"
-                                    font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                    font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                     color: box1.isActive ? root.base : root.blue
                                     Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                 }
@@ -1059,7 +1059,7 @@ Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignVCenter
                                     Text {
                                         anchors.centerIn: parent; text: "󰁦"
-                                        font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: box2.isActive ? root.base : root.sapphire
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1150,7 +1150,7 @@ Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignTop; Layout.topMargin: root.s(2)
                                     Text {
                                         anchors.top: parent.top; anchors.horizontalCenter: parent.horizontalCenter
-                                        text: "󰌌"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        text: "󰌌"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: box3.isActive ? root.base : root.green
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1320,7 +1320,7 @@ Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignTop; Layout.topMargin: root.s(2)
                                     Text {
                                         anchors.top: parent.top; anchors.horizontalCenter: parent.horizontalCenter
-                                        text: "󰯍"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        text: "󰯍"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: box4.isActive ? root.base : root.teal
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1443,7 +1443,7 @@ Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignTop; Layout.topMargin: root.s(2)
                                     Text {
                                         anchors.top: parent.top; anchors.horizontalCenter: parent.horizontalCenter
-                                        text: "󰋩"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        text: "󰋩"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: box5.isActive ? root.base : root.mauve
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1571,7 +1571,7 @@ Item {
                                 Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignVCenter
                                     Text {
-                                        anchors.centerIn: parent; text: "󰽿"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        anchors.centerIn: parent; text: "󰽿"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: box6.isActive ? root.base : root.red
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1748,7 +1748,7 @@ Item {
                                             Behavior on color { ColorAnimation { duration: 220 } }
                                             Behavior on border.color { ColorAnimation { duration: 220 } }
                                             RowLayout { anchors.fill: parent; anchors.margins: root.s(7); spacing: root.s(7)
-                                                Text { text: "󰄾"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(12); color: wBox0.isActive ? Qt.alpha(root.base, 0.6) : root.overlay0; Behavior on color { ColorAnimation { duration: 220 } } }
+                                                Text { text: "󰄾"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(12); color: wBox0.isActive ? Qt.alpha(root.base, 0.6) : root.overlay0; Behavior on color { ColorAnimation { duration: 220 } } }
                                                 Text { text: modelData; font.family: "Inter"; font.pixelSize: root.s(11); color: wBox0.isActive ? Qt.alpha(root.base, 0.85) : root.subtext1; Layout.fillWidth: true; Behavior on color { ColorAnimation { duration: 220 } } }
                                             }
                                         }
@@ -1797,7 +1797,7 @@ Item {
                                             Behavior on color { ColorAnimation { duration: 220 } }
                                             Behavior on border.color { ColorAnimation { duration: 220 } }
                                             RowLayout { anchors.fill: parent; anchors.margins: root.s(7); spacing: root.s(7)
-                                                Text { text: "󰄾"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(12); color: wBox0.isActive ? Qt.alpha(root.base, 0.6) : root.overlay0; Behavior on color { ColorAnimation { duration: 220 } } }
+                                                Text { text: "󰄾"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(12); color: wBox0.isActive ? Qt.alpha(root.base, 0.6) : root.overlay0; Behavior on color { ColorAnimation { duration: 220 } } }
                                                 Text { text: modelData; font.family: "Inter"; font.pixelSize: root.s(11); color: wBox0.isActive ? Qt.alpha(root.base, 0.85) : root.subtext1; Layout.fillWidth: true; Behavior on color { ColorAnimation { duration: 220 } } }
                                             }
                                         }
@@ -1836,7 +1836,7 @@ Item {
                                 Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignVCenter
                                     Text {
-                                        anchors.centerIn: parent; text: "󰌆"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        anchors.centerIn: parent; text: "󰌆"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: wBox1.isActive ? root.base : root.blue
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1868,7 +1868,7 @@ Item {
                                 RowLayout {
                                     anchors.fill: parent; anchors.margins: root.s(10); spacing: root.s(10)
                                     Text {
-                                        text: "󰌆"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(16)
+                                        text: "󰌆"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(16)
                                         color: wBox1.isActive ? Qt.alpha(root.base, 0.6) : root.subtext0
                                         Behavior on color { ColorAnimation { duration: 220 } }
                                     }
@@ -1891,7 +1891,7 @@ Item {
                                     Rectangle {
                                         width: root.s(24); height: root.s(24); radius: root.s(4); color: "transparent"
                                         Text {
-                                            anchors.centerIn: parent; text: root.apiKeyVisible ? "󰈈" : "󰈉"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(16)
+                                            anchors.centerIn: parent; text: root.apiKeyVisible ? "󰈈" : "󰈉"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(16)
                                             color: eyeMa.containsMouse
                                                 ? (wBox1.isActive ? root.base : root.blue)
                                                 : (wBox1.isActive ? Qt.alpha(root.base, 0.6) : root.subtext0)
@@ -1928,7 +1928,7 @@ Item {
                                 Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignVCenter
                                     Text {
-                                        anchors.centerIn: parent; text: "󰖐"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        anchors.centerIn: parent; text: "󰖐"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: wBox2.isActive ? root.base : root.blue
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1999,7 +1999,7 @@ Item {
                                 Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignVCenter
                                     Text {
-                                        anchors.centerIn: parent; text: "°C"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
+                                        anchors.centerIn: parent; text: "°C"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(18)
                                         color: wBox3.isActive ? root.base : root.blue
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -2228,7 +2228,7 @@ Item {
                                         Text {
                                             anchors.centerIn: parent
                                             text: model.isEditing ? "▴" : "󰏫"
-                                            font.family: model.isEditing ? "Inter" : "Iosevka Nerd Font"
+                                            font.family: model.isEditing ? "Inter" : "JetBrainsMono Nerd Font"
                                             font.pixelSize: root.s(13)
                                             color: model.isEditing
                                                 ? root.base
@@ -2548,7 +2548,7 @@ Item {
                                             RowLayout {
                                                 anchors.centerIn: parent; spacing: root.s(6)
                                                 Text {
-                                                    text: "󰆴"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(14)
+                                                    text: "󰆴"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(14)
                                                     color: delMa.containsMouse ? root.base : root.red
                                                     Behavior on color { ColorAnimation { duration: 180 } }
                                                 }
@@ -2578,7 +2578,7 @@ Item {
                                             RowLayout {
                                                 anchors.centerIn: parent; spacing: root.s(6)
                                                 Text {
-                                                    text: "󰆓"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(14)
+                                                    text: "󰆓"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(14)
                                                     color: rowSaveMa.containsMouse ? root.base : root.green
                                                     Behavior on color { ColorAnimation { duration: 180 } }
                                                 }
@@ -2698,7 +2698,7 @@ Item {
                             spacing: root.s(7)
                             Text { 
                                 text: "󰆓"
-                                font.family: "Iosevka Nerd Font"
+                                font.family: "JetBrainsMono Nerd Font"
                                 font.pixelSize: root.s(15)
                                 color: headerSaveMa.containsMouse ? root.base : root.mauve
                                 Behavior on color { ColorAnimation { duration: 180 } }
@@ -2798,7 +2798,7 @@ Item {
                     RowLayout {
                         anchors.fill: parent; anchors.leftMargin: root.s(11); anchors.rightMargin: root.s(11); spacing: root.s(9)
                         Text {
-                            text: "󰍉"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(15)
+                            text: "󰍉"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(15)
                             color: root.isSearchMode ? root.sapphire : root.subtext0
                             Behavior on color { ColorAnimation { duration: 200 } }
                             MouseArea { anchors.fill: parent; anchors.margins: -root.s(6); hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: { root.isSearchMode = true; globalSearchInput.forceActiveFocus(); } }
@@ -2928,7 +2928,7 @@ Item {
                                     spacing: root.s(7)
                                     Text {
                                         text: root.tabIcons[index]
-                                        font.family: "Iosevka Nerd Font"
+                                        font.family: "JetBrainsMono Nerd Font"
                                         font.pixelSize: root.s(14)
                                         color: isActive ? root.base : root.subtext0
                                         Behavior on color { ColorAnimation { duration: 250; easing.type: Easing.OutExpo } }
@@ -2978,7 +2978,7 @@ Item {
                                 visible: root.globalSearchQuery.trim() === ""
                                 ColumnLayout {
                                     anchors.centerIn: parent; spacing: root.s(8)
-                                    Text { Layout.alignment: Qt.AlignHCenter; text: ""; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(30); color: Qt.alpha(root.subtext0, 0.25) }
+                                    Text { Layout.alignment: Qt.AlignHCenter; text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(30); color: Qt.alpha(root.subtext0, 0.25) }
                                     Text { Layout.alignment: Qt.AlignHCenter; text: "Type to search settings & keybinds..."; font.family: "JetBrains Mono"; font.pixelSize: root.s(12); color: Qt.alpha(root.subtext0, 0.35) }
                                 }
                             }
@@ -3021,7 +3021,7 @@ Item {
                                                 color: Qt.alpha(root[card.color], 0.15)
                                                 border.color: Qt.alpha(root[card.color], 0.3); border.width: 1
                                                 Text {
-                                                    anchors.centerIn: parent; text: card.icon; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(15)
+                                                    anchors.centerIn: parent; text: card.icon; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(15)
                                                     color: root[card.color]
                                                 }
                                             }
@@ -3123,7 +3123,7 @@ Item {
                                                 color: Qt.alpha(root.peach, 0.12)
                                                 border.color: Qt.alpha(root.peach, 0.25); border.width: 1
                                                 Text {
-                                                    anchors.centerIn: parent; text: "󰌌"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(15)
+                                                    anchors.centerIn: parent; text: "󰌌"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(15)
                                                     color: root.peach
                                                 }
                                             }

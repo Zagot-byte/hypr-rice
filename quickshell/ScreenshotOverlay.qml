@@ -25,9 +25,9 @@ PanelWindow {
     
     MatugenColors { id: _theme }
     property color dimColor: Qt.alpha(_theme.crust, 0.50)
-    property color selectionTint: Qt.alpha(_theme.mauve, 0.05)
+    property color selectionTint: Qt.alpha(_theme.teal, 0.05)
     property color handleColor: _theme.text
-    property color accentColor: _theme.mauve
+    property color accentColor: _theme.teal
 
     property bool isEditMode: Quickshell.env("QS_SCREENSHOT_EDIT") === "true"
     
@@ -214,13 +214,13 @@ PanelWindow {
         radius: s(18)
         
         // Idle is a solid base color, full matte filled-look
-        color: tBtn.isDanger ? _theme.red : (maBtn.containsMouse ? _theme.surface1 : _theme.surface0)
+        color: tBtn.isDanger ? _theme.teal : (maBtn.containsMouse ? _theme.surface1 : _theme.surface0)
         Behavior on color { ColorAnimation { duration: 150 } }
 
         RowLayout {
             anchors.centerIn: parent; spacing: s(6)
             Text { 
-                font.family: "Iosevka Nerd Font"
+                font.family: "JetBrainsMono Nerd Font"
                 text: tBtn.iconTxt
                 color: tBtn.isDanger ? _theme.crust : _theme.text
                 font.pixelSize: s(18) 
@@ -272,8 +272,8 @@ PanelWindow {
     Rectangle {
         visible: root.isSelecting || root.hasSelection
         x: root.selX; y: root.selY; width: root.selW; height: root.selH
-        color: (root.showQrPopup && root.isQrSuccess) ? Qt.alpha(_theme.green, 0.15) : (root.isVideoMode ? Qt.alpha(_theme.red, 0.05) : root.selectionTint)
-        border.color: (root.showQrPopup && root.isQrSuccess) ? _theme.green : (root.isVideoMode ? _theme.red : root.accentColor)
+        color: (root.showQrPopup && root.isQrSuccess) ? Qt.alpha(_theme.green, 0.15) : (root.isVideoMode ? Qt.alpha(_theme.teal, 0.05) : root.selectionTint)
+        border.color: (root.showQrPopup && root.isQrSuccess) ? _theme.green : (root.isVideoMode ? _theme.teal : root.accentColor)
         border.width: s(4)
         z: 5
     }
@@ -448,9 +448,9 @@ PanelWindow {
 
                 Text {
                     anchors.centerIn: parent
-                    font.family: "Iosevka Nerd Font"
+                    font.family: "JetBrainsMono Nerd Font"
                     text: parent.parent.mutedValue ? parent.parent.iconOff : parent.parent.iconOn
-                    color: parent.parent.mutedValue ? _theme.red : _theme.text
+                    color: parent.parent.mutedValue ? _theme.teal : _theme.text
                     font.pixelSize: s(16)
                 }
                 MouseArea {
@@ -470,13 +470,13 @@ PanelWindow {
                     width: parent.availableWidth; height: implicitHeight
                     radius: s(2)
                     color: _theme.surface2
-                    Rectangle { width: parent.parent.visualPosition * parent.width; height: parent.height; color: parent.parent.parent.mutedValue ? _theme.subtext0 : _theme.mauve; radius: s(2) }
+                    Rectangle { width: parent.parent.visualPosition * parent.width; height: parent.height; color: parent.parent.parent.mutedValue ? _theme.subtext0 : _theme.teal; radius: s(2) }
                 }
                 handle: Rectangle {
                     x: parent.leftPadding + parent.visualPosition * (parent.availableWidth - width)
                     y: parent.topPadding + parent.availableHeight / 2 - height / 2
                     implicitWidth: s(12); implicitHeight: s(12); radius: s(6)
-                    color: parent.parent.parent.mutedValue ? _theme.subtext0 : _theme.mauve
+                    color: parent.parent.parent.mutedValue ? _theme.subtext0 : _theme.teal
                 }
             }
 
@@ -485,7 +485,7 @@ PanelWindow {
                 width: s(20); height: s(30); color: "transparent"
                 Text {
                     anchors.centerIn: parent
-                    font.family: "Iosevka Nerd Font"
+                    font.family: "JetBrainsMono Nerd Font"
                     // Correcting dropdown icon orientation base on position relative to fitsOutsideBottom
                     text: toolbar.fitsOutsideBottom ? "󰅃" : "󰅀" 
                     color: _theme.text
@@ -527,7 +527,7 @@ PanelWindow {
                     color: maList.containsMouse ? _theme.surface0 : "transparent"
                     RowLayout {
                         anchors.fill: parent; anchors.margins: s(6)
-                        Text { text: model.devDesc; color: root.micDevice === model.devName ? _theme.mauve : _theme.text; font.pixelSize: s(12); elide: Text.ElideRight; Layout.fillWidth: true }
+                        Text { text: model.devDesc; color: root.micDevice === model.devName ? _theme.teal : _theme.text; font.pixelSize: s(12); elide: Text.ElideRight; Layout.fillWidth: true }
                     }
                     MouseArea { 
                         id: maList; anchors.fill: parent; hoverEnabled: true; 
@@ -560,7 +560,7 @@ PanelWindow {
                         y: s(2)
                         height: parent.height - s(4)
                         radius: s(16) 
-                        color: _theme.mauve
+                        color: _theme.teal
                         z: 0
 
                         property bool curVideoMode: root.isVideoMode
@@ -591,12 +591,12 @@ PanelWindow {
                         z: 1
                         Item {
                             width: parent.width / 2; height: parent.height
-                            Text { anchors.centerIn: parent; font.family: "Iosevka Nerd Font"; text: "󰄄"; color: !root.isVideoMode ? _theme.crust : _theme.text; font.pixelSize: s(16) }
+                            Text { anchors.centerIn: parent; font.family: "JetBrainsMono Nerd Font"; text: "󰄄"; color: !root.isVideoMode ? _theme.crust : _theme.text; font.pixelSize: s(16) }
                             MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: root.isVideoMode = false }
                         }
                         Item {
                             width: parent.width / 2; height: parent.height
-                            Text { anchors.centerIn: parent; font.family: "Iosevka Nerd Font"; text: ""; color: root.isVideoMode ? _theme.crust : _theme.text; font.pixelSize: s(16) }
+                            Text { anchors.centerIn: parent; font.family: "JetBrainsMono Nerd Font"; text: ""; color: root.isVideoMode ? _theme.crust : _theme.text; font.pixelSize: s(16) }
                             MouseArea { anchors.fill: parent; cursorShape: Qt.PointingHandCursor; onClicked: root.isVideoMode = true }
                         }
                     }
@@ -709,7 +709,7 @@ PanelWindow {
                     
                     gradient: Gradient {
                         orientation: Gradient.Horizontal
-                        GradientStop { position: 0.0; color: root.isVideoMode ? _theme.red : root.accentColor }
+                        GradientStop { position: 0.0; color: root.isVideoMode ? _theme.teal : root.accentColor }
                         GradientStop { position: 1.0; color: "transparent" }
                     }
                 }
@@ -727,7 +727,7 @@ PanelWindow {
                     anchors.fill: parent
                     radius: width / 2
                     color: "transparent"
-                    border.color: root.isVideoMode ? Qt.alpha(_theme.red, 0.4) : Qt.alpha(_theme.surface1, 0.8)
+                    border.color: root.isVideoMode ? Qt.alpha(_theme.teal, 0.4) : Qt.alpha(_theme.surface1, 0.8)
                     border.width: s(2)
                     Behavior on border.color { ColorAnimation { duration: 250 } }
                 }
@@ -738,7 +738,7 @@ PanelWindow {
                     height: width
                     radius: width / 2
                     anchors.centerIn: parent
-                    color: root.isVideoMode ? _theme.red : root.accentColor
+                    color: root.isVideoMode ? _theme.teal : root.accentColor
                     Behavior on color { ColorAnimation { duration: 250 } }
                     Behavior on width { NumberAnimation { duration: 350; easing.type: Easing.OutBack } }
                 }
@@ -778,7 +778,7 @@ PanelWindow {
                     gradient: Gradient {
                         orientation: Gradient.Horizontal
                         GradientStop { position: 0.0; color: "transparent" }
-                        GradientStop { position: 1.0; color: root.isVideoMode ? _theme.red : root.accentColor }
+                        GradientStop { position: 1.0; color: root.isVideoMode ? _theme.teal : root.accentColor }
                     }
                 }
             }
@@ -800,7 +800,7 @@ PanelWindow {
             height: s(52)
             radius: s(26)
             color: _theme.base
-            border.color: model.qSuccess ? _theme.green : _theme.red
+            border.color: model.qSuccess ? _theme.green : _theme.teal
             border.width: s(2)
 
             property bool isHovered: maHover.containsMouse
@@ -820,7 +820,7 @@ PanelWindow {
 
                 Text {
                     text: model.qText
-                    color: model.qSuccess ? _theme.text : _theme.red
+                    color: model.qSuccess ? _theme.text : _theme.teal
                     font.family: "JetBrains Mono"
                     font.pixelSize: s(13)
                     font.weight: Font.DemiBold

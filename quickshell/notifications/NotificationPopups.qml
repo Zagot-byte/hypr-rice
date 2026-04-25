@@ -70,8 +70,8 @@ PanelWindow {
 
         MatugenColors { id: _theme }
 
-        property var blobPalette1: [_theme.mauve, _theme.blue, _theme.peach, _theme.green, _theme.pink]
-        property var blobPalette2: [_theme.sapphire, _theme.teal, _theme.maroon, _theme.yellow, _theme.red]
+        property var blobPalette1: [_theme.teal, _theme.blue, _theme.peach, _theme.green, _theme.pink]
+        property var blobPalette2: [_theme.sapphire, _theme.teal, _theme.maroon, _theme.yellow, _theme.teal]
 
         property real globalOrbitAngle: 0
         NumberAnimation on globalOrbitAngle {

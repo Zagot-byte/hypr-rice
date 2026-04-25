@@ -39,9 +39,9 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
     
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
     readonly property color maroon: _theme.maroon
     readonly property color peach: _theme.peach
     readonly property color yellow: _theme.yellow
@@ -95,13 +95,13 @@ Item {
         if (isCharging) return window.green;
         if (batCapacity >= 70) return window.blue;
         if (batCapacity >= 30) return window.yellow;
-        return window.red;
+        return window.teal;
     }
     readonly property color batColorEnd: Qt.lighter(batColorStart, 1.15)
 
     // Unified hue for Performance Profile
     readonly property color profileStart: {
-        if (powerProfile === "performance") return window.red;
+        if (powerProfile === "performance") return window.teal;
         if (powerProfile === "power-saver") return window.green;
         return window.blue;
     }
@@ -111,7 +111,7 @@ Item {
     readonly property color ambientPrimary: window.batColorStart
     readonly property color ambientSecondary: {
         if (isCharging) return window.sapphire;
-        if (batCapacity >= 70) return window.mauve;
+        if (batCapacity >= 70) return window.teal;
         if (batCapacity >= 30) return window.peach;
         return window.maroon; 
     }
@@ -346,8 +346,8 @@ Item {
                                 Layout.preferredWidth: dndMa.containsMouse ? window.s(38) + dndText.implicitWidth + window.s(8) : window.s(38)
                                 Layout.preferredHeight: window.s(38)
                                 radius: window.s(12)
-                                color: window.dndEnabled ? Qt.alpha(window.red, 0.15) : (dndMa.containsMouse ? window.surface1 : "transparent")
-                                border.color: window.dndEnabled ? window.red : (dndMa.containsMouse ? window.surface2 : "transparent")
+                                color: window.dndEnabled ? Qt.alpha(window.teal, 0.15) : (dndMa.containsMouse ? window.surface1 : "transparent")
+                                border.color: window.dndEnabled ? window.teal : (dndMa.containsMouse ? window.surface2 : "transparent")
                                 border.width: 1
                                 clip: true
 
@@ -367,16 +367,16 @@ Item {
                                         font.family: "JetBrains Mono"
                                         font.weight: Font.Bold
                                         font.pixelSize: window.s(13)
-                                        color: window.dndEnabled ? window.red : window.text
+                                        color: window.dndEnabled ? window.teal : window.text
                                         anchors.verticalCenter: parent.verticalCenter
                                         opacity: dndMa.containsMouse ? 1.0 : 0.0
                                         Behavior on opacity { NumberAnimation { duration: 250 } }
                                     }
 
                                     Text {
-                                        font.family: "Iosevka Nerd Font"
+                                        font.family: "JetBrainsMono Nerd Font"
                                         font.pixelSize: window.s(18)
-                                        color: window.dndEnabled ? window.red : (dndMa.containsMouse ? window.text : window.overlay0)
+                                        color: window.dndEnabled ? window.teal : (dndMa.containsMouse ? window.text : window.overlay0)
                                         text: window.dndEnabled ? "󰂛" : "󰂚"
                                         anchors.verticalCenter: parent.verticalCenter
                                         Behavior on color { ColorAnimation { duration: 150 } }
@@ -481,9 +481,9 @@ Item {
                                                 spacing: window.s(8)
                                                 
                                                 Text {
-                                                    font.family: "Iosevka Nerd Font"
+                                                    font.family: "JetBrainsMono Nerd Font"
                                                     font.pixelSize: window.s(14)
-                                                    color: window.mauve
+                                                    color: window.teal
                                                     text: window.isCollapsed(section) ? "󰅂" : "󰅀"
                                                     Behavior on rotation { NumberAnimation { duration: 250; easing.type: Easing.OutBack } }
                                                 }
@@ -510,9 +510,9 @@ Item {
 
                                             Text {
                                                 anchors.centerIn: parent
-                                                font.family: "Iosevka Nerd Font"
+                                                font.family: "JetBrainsMono Nerd Font"
                                                 font.pixelSize: window.s(14)
-                                                color: groupClearMa.containsMouse ? window.red : window.overlay0
+                                                color: groupClearMa.containsMouse ? window.teal : window.overlay0
                                                 text: "󰅖"
                                                 Behavior on color { ColorAnimation { duration: 150 } }
                                             }
@@ -594,14 +594,14 @@ Item {
                                                 Layout.preferredWidth: window.s(22)
                                                 Layout.preferredHeight: window.s(22)
                                                 radius: window.s(11)
-                                                color: itemClearMa.containsMouse ? Qt.alpha(window.red, 0.15) : "transparent"
+                                                color: itemClearMa.containsMouse ? Qt.alpha(window.teal, 0.15) : "transparent"
                                                 Behavior on color { ColorAnimation { duration: 150 } }
 
                                                 Text {
                                                     anchors.centerIn: parent
-                                                    font.family: "Iosevka Nerd Font"
+                                                    font.family: "JetBrainsMono Nerd Font"
                                                     font.pixelSize: window.s(12)
-                                                    color: itemClearMa.containsMouse ? window.red : window.overlay0
+                                                    color: itemClearMa.containsMouse ? window.teal : window.overlay0
                                                     text: "󰅖"
                                                     Behavior on color { ColorAnimation { duration: 150 } }
                                                 }
@@ -771,8 +771,8 @@ Item {
                             }
 
                             Text {
-                                font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18)
-                                color: logoutMa.containsMouse ? window.red : window.overlay0
+                                font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18)
+                                color: logoutMa.containsMouse ? window.teal : window.overlay0
                                 text: "󰍃"
                                 anchors.verticalCenter: parent.verticalCenter
                                 Behavior on color { ColorAnimation { duration: 150 } }
@@ -805,7 +805,7 @@ Item {
                             width: centralCore.width + window.s(45)
                             height: width
                             radius: width / 2
-                            color: centralCore.isDangerState ? window.red : window.ambientPrimary
+                            color: centralCore.isDangerState ? window.teal : window.ambientPrimary
                             opacity: centralCore.isDangerState ? 0.25 : 0.15
                             z: 0 
                             Behavior on color { ColorAnimation { duration: 400 } }
@@ -989,7 +989,7 @@ Item {
                                     spacing: window.s(8)
                                     
                                     Text {
-                                        font.family: "Iosevka Nerd Font"
+                                        font.family: "JetBrainsMono Nerd Font"
                                         font.pixelSize: window.s(28)
                                         color: window.batColorStart
                                         text: window.isCharging ? "󰂄" : (window.batCapacity > 20 ? "󰁹" : "󰂃")
@@ -1013,7 +1013,7 @@ Item {
                                     
                                     color: window.isCharging 
                                             ? Qt.tint(window.green, Qt.rgba(1, 1, 1, parent.textPulse * 0.4)) 
-                                            : (centralCore.isDangerState ? Qt.tint(window.red, Qt.rgba(1, 1, 1, parent.textPulse * 0.3)) : window.subtext0)
+                                            : (centralCore.isDangerState ? Qt.tint(window.teal, Qt.rgba(1, 1, 1, parent.textPulse * 0.3)) : window.subtext0)
                                             
                                     text: window.batStatus.toUpperCase()
                                     Behavior on color { ColorAnimation { duration: 300 } }
@@ -1067,7 +1067,7 @@ Item {
                                         Text {
                                             anchors.centerIn: parent
                                             text: window.sysBrightness > 66 ? "󰃠" : (window.sysBrightness > 33 ? "󰃟" : "󰃞")
-                                            font.family: "Iosevka Nerd Font"
+                                            font.family: "JetBrainsMono Nerd Font"
                                             font.pixelSize: window.s(22)
                                             color: window.ambientPrimary
                                             Behavior on color { ColorAnimation { duration: 200 } }
@@ -1149,7 +1149,7 @@ Item {
                                         Text {
                                             anchors.centerIn: parent
                                             text: window.sysMuted || window.sysVolume === 0 ? "󰖁" : (window.sysVolume > 50 ? "󰕾" : "󰖀")
-                                            font.family: "Iosevka Nerd Font"
+                                            font.family: "JetBrainsMono Nerd Font"
                                             font.pixelSize: window.s(22)
                                             color: window.sysMuted ? window.overlay0 : window.profileStart
                                             Behavior on color { ColorAnimation { duration: 200 } }
@@ -1339,7 +1339,7 @@ Item {
 
                                     Text { 
                                         anchors.centerIn: parent
-                                        font.family: "Iosevka Nerd Font"
+                                        font.family: "JetBrainsMono Nerd Font"
                                         font.pixelSize: window.s(24)
                                         color: actionMa.containsMouse ? window.text : window.subtext0
                                         text: icon
@@ -1354,7 +1354,7 @@ Item {
                                         Text { 
                                             anchors.horizontalCenter: parent.horizontalCenter
                                             y: (actionCapsule.height / 2) - (height / 2) - (actionCapsule.height - parent.height)
-                                            font.family: "Iosevka Nerd Font"
+                                            font.family: "JetBrainsMono Nerd Font"
                                             font.pixelSize: window.s(24)
                                             color: window.crust
                                             text: icon 
@@ -1455,7 +1455,7 @@ Item {
                                             anchors.centerIn: parent
                                             spacing: window.s(8)
                                             Text {
-                                                font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18)
+                                                font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18)
                                                 color: window.powerProfile === name ? window.crust : (profileMa.containsMouse ? window.text : window.subtext0)
                                                 text: icon
                                                 Behavior on color { ColorAnimation { duration: 200 } }

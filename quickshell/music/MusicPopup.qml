@@ -40,9 +40,9 @@ Item {
     readonly property color blue: _theme.blue
     readonly property color sapphire: _theme.sapphire
     readonly property color lavender: _theme.blue // Mapped to blue as Matugen template lacks lavender
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
     readonly property color yellow: _theme.yellow
 
     // Data State Properties
@@ -253,7 +253,7 @@ Item {
             root.lastEqUpdate = Date.now(); 
             
             root.triggerEqLightning();
-            execCmd(`$HOME/.config/hypr/scripts/quickshell/music/equalizer.sh preset ${presetName}`);
+            execCmd(`$HOME/.config/quickshell/velora/music/equalizer.sh preset ${presetName}`);
         }
     }
 
@@ -284,7 +284,7 @@ Item {
     Process {
         id: musicProc
         running: true
-        command: ["bash", "-c", "$HOME/.config/hypr/scripts/quickshell/music/music_info.sh"]
+        command: ["bash", "-c", "$HOME/.config/quickshell/velora/music/music_info.sh"]
         stdout: StdioCollector {
             onStreamFinished: {
                 if (this.text) {
@@ -306,7 +306,7 @@ Item {
     Process {
         id: eqProc
         running: true
-        command: ["bash", "-c", "$HOME/.config/hypr/scripts/quickshell/music/equalizer.sh get"]
+        command: ["bash", "-c", "$HOME/.config/quickshell/velora/music/equalizer.sh get"]
         stdout: StdioCollector {
             onStreamFinished: {
                 if (this.text) {
@@ -723,7 +723,7 @@ Item {
                                         id: pillContent
                                         anchors.centerIn: parent
                                         spacing: root.s(6)
-                                        Text { text: root.musicData.deviceIcon || "󰓃"; color: root.mauve; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(14) }
+                                        Text { text: root.musicData.deviceIcon || "󰓃"; color: root.mauve; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(14) }
                                         Text { text: root.musicData.deviceName || "Speaker"; color: root.overlay2; font.family: "JetBrains Mono"; font.pixelSize: root.s(12); font.bold: true }
                                     }
                                 }
@@ -778,7 +778,7 @@ Item {
                                         root.musicData = temp;
 
                                         var safePlayer = root.musicData.playerName ? root.musicData.playerName : "";
-                                        root.execCmd(`$HOME/.config/hypr/scripts/quickshell/music/player_control.sh seek ${value.toFixed(2)} ${root.musicData.length} "${safePlayer}"`);
+                                        root.execCmd(`$HOME/.config/quickshell/velora/music/player_control.sh seek ${value.toFixed(2)} ${root.musicData.length} "${safePlayer}"`);
                                         
                                         seekDebounceTimer.restart();
                                     }
@@ -878,7 +878,7 @@ Item {
                                 width: root.s(30); height: root.s(30)
                                 cursorShape: Qt.PointingHandCursor
                                 onClicked: root.execCmd("playerctl previous")
-                                Text { anchors.centerIn: parent; text: ""; color: parent.pressed ? root.text : root.overlay2; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(24) }
+                                Text { anchors.centerIn: parent; text: ""; color: parent.pressed ? root.text : root.overlay2; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(24) }
                             }
                             MouseArea {
                                 id: playPauseBtn
@@ -931,7 +931,7 @@ Item {
                                     anchors.centerIn: parent
                                     text: root.musicData.status === "Playing" ? "" : ""
                                     color: parent.pressed ? root.pink : root.mauve
-                                    font.family: "Iosevka Nerd Font"
+                                    font.family: "JetBrainsMono Nerd Font"
                                     font.pixelSize: root.s(42) 
                                     scale: parent.pressed ? 0.8 : 1.0
                                     Behavior on color { ColorAnimation { duration: 150 } }
@@ -942,7 +942,7 @@ Item {
                                 width: root.s(30); height: root.s(30)
                                 cursorShape: Qt.PointingHandCursor
                                 onClicked: root.execCmd("playerctl next")
-                                Text { anchors.centerIn: parent; text: ""; color: parent.pressed ? root.text : root.overlay2; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(24) }
+                                Text { anchors.centerIn: parent; text: ""; color: parent.pressed ? root.text : root.overlay2; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: root.s(24) }
                             }
                         }
                     }
@@ -1018,7 +1018,7 @@ Item {
                                         root.lastEqUpdate = Date.now(); 
                                         
                                         root.triggerEqLightning();
-                                        root.execCmd("$HOME/.config/hypr/scripts/quickshell/music/equalizer.sh apply");
+                                        root.execCmd("$HOME/.config/quickshell/velora/music/equalizer.sh apply");
                                     }
                                 }
                             }
@@ -1135,7 +1135,7 @@ Item {
                                                     // Set lock here too to protect individual slider tweaks
                                                     root.lastEqUpdate = Date.now();
                                                     
-                                                    root.execCmd(`$HOME/.config/hypr/scripts/quickshell/music/equalizer.sh set_band ${modelData.idx} ${Math.round(value)}`);
+                                                    root.execCmd(`$HOME/.config/quickshell/velora/music/equalizer.sh set_band ${modelData.idx} ${Math.round(value)}`);
                                                 }
                                             }
 

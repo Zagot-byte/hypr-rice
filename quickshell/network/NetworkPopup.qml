@@ -175,18 +175,18 @@ Item {
     readonly property color surface0: _theme.surface0
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
     readonly property color sapphire: _theme.sapphire
     readonly property color blue: _theme.blue
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
     readonly property color maroon: _theme.maroon
     readonly property color peach: _theme.peach
 
-    readonly property string scriptsDir: Quickshell.env("HOME") + "/.config/hypr/scripts/quickshell/network"
+    readonly property string scriptsDir: Quickshell.env("HOME") + "/.config/quickshell/velora/network"
     
-    readonly property color sharedAccent: Qt.lighter(window.sapphire, 1.15) 
-    readonly property color btAccent: window.mauve
+    readonly property color sharedAccent: Qt.lighter(window.teal, 1.15) 
+    readonly property color btAccent: window.teal
 
     property string activeMode: "bt"
     readonly property color activeColor: activeMode === "bt" ? window.btAccent : window.sharedAccent
@@ -885,7 +885,7 @@ Item {
                         radius: width / 2
                         color: "transparent"
                         
-                        border.color: Object.keys(window.disconnectingDevices).length > 0 ? window.red : window.activeColor
+                        border.color: Object.keys(window.disconnectingDevices).length > 0 ? window.teal : window.activeColor
                         border.width: Object.keys(window.disconnectingDevices).length > 0 ? window.s(2) : 1
                         
                         Behavior on border.color { ColorAnimation { duration: 150 } }
@@ -1119,7 +1119,7 @@ Item {
                                     color: {
                                         if (!window.currentPower) return window.mantle;
                                         if (isMyDisconnecting) return window.surface0; 
-                                        if (centralCore.isDangerState && window.currentConn && !showPassword) return Qt.lighter(window.red, 1.15);
+                                        if (centralCore.isDangerState && window.currentConn && !showPassword) return Qt.lighter(window.teal, 1.15);
                                         return window.currentConn || showPassword ? Qt.lighter(window.activeColor, 1.15) : window.surface0;
                                     }
                                     Behavior on color { ColorAnimation { duration: 300 } }
@@ -1127,17 +1127,17 @@ Item {
                                 GradientStop {
                                     position: 1.0
                                     color: {
-                                        if (!window.currentPower) return window.crust;
-                                        if (isMyDisconnecting) return window.base; 
-                                        if (centralCore.isDangerState && window.currentConn && !showPassword) return window.red;
-                                        return window.currentConn || showPassword ? window.activeColor : window.base;
+                                        if (!window.currentPower) return window.text;
+                                        if (isMyDisconnecting) return window.text; 
+                                        if (centralCore.isDangerState && window.currentConn && !showPassword) return window.teal;
+                                        return window.currentConn || showPassword ? window.activeColor : window.text;
                                     }
                                     Behavior on color { ColorAnimation { duration: 300 } }
                                 }
                             }
 
                             border.color: {
-                                if (!window.currentPower) return window.crust;
+                                if (!window.currentPower) return window.text;
                                 if (isMyDisconnecting) return window.surface0;
                                 if (centralCore.isDangerState && window.currentConn && !showPassword) return window.maroon;
                                 return window.currentConn || showPassword ? Qt.lighter(window.activeColor, 1.1) : window.surface1;
@@ -1203,7 +1203,7 @@ Item {
                                     
                                     var grad = ctx.createLinearGradient(0, 0, 0, height);
                                     grad.addColorStop(0, window.surface1.toString()); 
-                                    grad.addColorStop(1, window.crust.toString());
+                                    grad.addColorStop(1, window.text.toString());
                                     ctx.fillStyle = grad;
                                     ctx.fill();
                                     ctx.restore();
@@ -1215,7 +1215,7 @@ Item {
                                 width: parent.width + window.s(40)
                                 height: width
                                 radius: width / 2
-                                color: centralCore.isDangerState && window.currentConn && !showPassword ? window.red : window.activeColor
+                                color: centralCore.isDangerState && window.currentConn && !showPassword ? window.teal : window.activeColor
                                 opacity: (window.currentConn || showPassword) && !isMyDisconnecting ? (centralCore.isDangerState && !showPassword ? 0.3 : 0.15) : 0.0
                                 z: -1
                                 Behavior on color { ColorAnimation { duration: 200 } }
@@ -1234,7 +1234,7 @@ Item {
                                 height: width
                                 radius: width / 2
                                 color: "transparent"
-                                border.color: centralCore.isDangerState && !showPassword ? window.red : window.activeColor
+                                border.color: centralCore.isDangerState && !showPassword ? window.teal : window.activeColor
                                 border.width: window.s(3)
                                 z: -2
                                 
@@ -1282,7 +1282,7 @@ Item {
                                 }
                                 Text {
                                     anchors.centerIn: parent
-                                    font.family: "Iosevka Nerd Font"
+                                    font.family: "JetBrainsMono Nerd Font"
                                     font.pixelSize: window.s(48) - (window.s(16) * coreContainer.multiShift)
                                     color: window.activeColor
                                     text: window.activeMode === "wifi" ? "󰤨" : (window.activeMode === "eth" ? "󰈀" : "󰂯")
@@ -1300,7 +1300,7 @@ Item {
                                 visible: showEthDisconnected
                                 opacity: visible ? 1.0 : 0.0
                                 Behavior on opacity { NumberAnimation { duration: 300 } }
-                                Text { Layout.alignment: Qt.AlignHCenter; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(48); color: window.overlay0; text: "󰈂" }
+                                Text { Layout.alignment: Qt.AlignHCenter; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(48); color: window.overlay0; text: "󰈂" }
                                 Text { Layout.alignment: Qt.AlignHCenter; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(14); color: window.overlay0; text: window.currentPowerPending ? (window.expectedEthPower === "on" ? "Powering On..." : "Powering Off...") : "Disconnected" }
                             }
 
@@ -1317,12 +1317,12 @@ Item {
                                     anchors.centerIn: parent
                                     spacing: window.s(8)
                                     
-                                    Text { Layout.alignment: Qt.AlignHCenter; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(32); color: window.crust; text: "󰤨" }
+                                    Text { Layout.alignment: Qt.AlignHCenter; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(32); color: window.text; text: "󰤨" }
                                     
                                     Text { 
                                         Layout.alignment: Qt.AlignHCenter; Layout.maximumWidth: pwdLayer.width - window.s(40)
                                         font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(13)
-                                        color: window.crust; text: window.pendingWifiSsid; elide: Text.ElideRight 
+                                        color: window.text; text: window.pendingWifiSsid; elide: Text.ElideRight 
                                     }
                                     
                                     Rectangle {
@@ -1330,7 +1330,7 @@ Item {
                                         Layout.preferredWidth: pwdLayer.width - window.s(40); height: window.s(36)
                                         radius: window.s(18)
                                         color: window.surface0
-                                        border.color: wifiPasswordField.activeFocus ? window.crust : "transparent"
+                                        border.color: wifiPasswordField.activeFocus ? window.text : "transparent"
                                         border.width: 1
                                         Behavior on border.color { ColorAnimation { duration: 200 } }
                                         
@@ -1372,9 +1372,9 @@ Item {
 
                                     Text {
                                         Layout.alignment: Qt.AlignHCenter
-                                        font.family: "Iosevka Nerd Font"
+                                        font.family: "JetBrainsMono Nerd Font"
                                         font.pixelSize: window.s(48) - (window.s(16) * coreContainer.multiShift)
-                                        color: isMyDisconnecting ? window.overlay1 : window.crust
+                                        color: isMyDisconnecting ? window.overlay1 : window.text
                                         text: isMyDisconnecting ? "" : (coreMa.containsMouse ? (window.activeMode === "wifi" ? "󰖪" : (window.activeMode === "eth" ? "󰈂" : "󰂲")) : (coreContainer.myDevice ? (coreContainer.myDevice.icon || (window.activeMode === "wifi" ? "󰤨" : (window.activeMode === "eth" ? "󰈀" : "󰂯"))) : ""))
                                         Behavior on color { ColorAnimation { duration: 200 } }
                                     }
@@ -1385,7 +1385,7 @@ Item {
                                         horizontalAlignment: Text.AlignHCenter
                                         font.family: "JetBrains Mono"; font.weight: Font.Black
                                         font.pixelSize: window.s(16) - (window.s(4) * coreContainer.multiShift)
-                                        color: isMyDisconnecting ? window.overlay1 : window.crust
+                                        color: isMyDisconnecting ? window.overlay1 : window.text
                                         text: coreContainer.myDevice ? (window.activeMode === "wifi" ? coreContainer.myDevice.ssid : coreContainer.myDevice.name) : ""
                                         elide: Text.ElideRight
                                         Behavior on color { ColorAnimation { duration: 200 } }
@@ -1393,7 +1393,7 @@ Item {
                                     Text {
                                         Layout.alignment: Qt.AlignHCenter
                                         font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(11)
-                                        color: isMyDisconnecting ? window.overlay1 : (coreMa.containsMouse ? window.crust : "#99000000")
+                                        color: isMyDisconnecting ? window.overlay1 : (coreMa.containsMouse ? window.text : "#99000000")
                                         text: isMyDisconnecting ? "Disconnecting..." : (centralCore.disconnectFill > 0.01 ? "Hold..." : "Connected")
                                         Behavior on color { ColorAnimation { duration: 200 } }
                                     }
@@ -1415,7 +1415,7 @@ Item {
 
                                         Text {
                                             Layout.alignment: Qt.AlignHCenter
-                                            font.family: "Iosevka Nerd Font"
+                                            font.family: "JetBrainsMono Nerd Font"
                                             font.pixelSize: window.s(48) - (window.s(16) * coreContainer.multiShift)
                                             color: window.text
                                             text: isMyDisconnecting ? "" : (coreMa.containsMouse ? (window.activeMode === "wifi" ? "󰖪" : (window.activeMode === "eth" ? "󰈂" : "󰂲")) : (coreContainer.myDevice ? (coreContainer.myDevice.icon || (window.activeMode === "wifi" ? "󰤨" : (window.activeMode === "eth" ? "󰈀" : "󰂯"))) : ""))
@@ -1728,7 +1728,7 @@ Item {
                                 Rectangle {
                                     anchors.fill: parent
                                     radius: parent.radius
-                                    color: window.red
+                                    color: window.teal
                                     opacity: floatCard.isFailed ? 0.3 : 0.0
                                     Behavior on opacity { NumberAnimation { duration: 300 } }
                                 }
@@ -1738,7 +1738,7 @@ Item {
                                     radius: window.s(14)
                                     color: "transparent"
                                     border.width: 1
-                                    border.color: floatCard.isFailed ? window.red : window.surface2
+                                    border.color: floatCard.isFailed ? window.teal : window.surface2
                                     visible: !isHighlighted && !locksList
                                     Behavior on border.color { ColorAnimation { duration: 300 } }
                                 }
@@ -1749,21 +1749,21 @@ Item {
                                     opacity: locksList || isHighlighted ? 1.0 : 0.0
                                     color: "transparent"
                                     border.width: isHighlighted && !locksList ? 1 : window.s(2)
-                                    border.color: floatCard.isFailed ? window.red : "transparent"
+                                    border.color: floatCard.isFailed ? window.teal : "transparent"
                                     Behavior on opacity { NumberAnimation { duration: 250 } }
                                     
                                     Rectangle {
                                         anchors.fill: parent
                                         anchors.margins: isHighlighted && !locksList ? 1 : window.s(2)
                                         radius: window.s(12)
-                                        color: window.base
+                                        color: window.text
                                         opacity: locksList ? 0.9 : 1.0
                                     }
                                     
                                     gradient: Gradient {
                                         orientation: Gradient.Horizontal
-                                        GradientStop { position: 0.0; color: floatCard.isFailed ? Qt.lighter(window.red, 1.15) : Qt.lighter(window.activeColor, 1.15) }
-                                        GradientStop { position: 1.0; color: floatCard.isFailed ? window.red : window.activeColor }
+                                        GradientStop { position: 0.0; color: floatCard.isFailed ? Qt.lighter(window.teal, 1.15) : Qt.lighter(window.activeColor, 1.15) }
+                                        GradientStop { position: 1.0; color: floatCard.isFailed ? window.teal : window.activeColor }
                                     }
                                     z: -1
                                 }
@@ -1875,9 +1875,9 @@ Item {
                                     spacing: window.s(10)
                                     
                                     Text {
-                                        font.family: "Iosevka Nerd Font"
+                                        font.family: "JetBrainsMono Nerd Font"
                                         font.pixelSize: window.s(20)
-                                        color: floatCard.isFailed ? window.red : (floatCard.isMyBusy ? window.text : window.activeColor)
+                                        color: floatCard.isFailed ? window.teal : (floatCard.isMyBusy ? window.text : window.activeColor)
                                         text: icon
                                         Behavior on color { ColorAnimation { duration: 200 } }
                                     }
@@ -1901,7 +1901,7 @@ Item {
                                                 font.family: "JetBrains Mono"
                                                 font.weight: Font.Bold
                                                 font.pixelSize: window.s(13)
-                                                color: floatCard.isFailed ? window.red : (floatCard.isHighlighted ? window.activeColor : window.text)
+                                                color: floatCard.isFailed ? window.teal : (floatCard.isHighlighted ? window.activeColor : window.text)
                                                 Behavior on color { ColorAnimation { duration: 200 } }
                                             }
                                             Text {
@@ -1913,7 +1913,7 @@ Item {
                                                 font.family: "JetBrains Mono"
                                                 font.weight: Font.Bold
                                                 font.pixelSize: window.s(13)
-                                                color: floatCard.isFailed ? window.red : (floatCard.isHighlighted ? window.activeColor : window.text)
+                                                color: floatCard.isFailed ? window.teal : (floatCard.isHighlighted ? window.activeColor : window.text)
                                             }
                                         }
                                         
@@ -1939,7 +1939,7 @@ Item {
                                         width: baseTextRow.width; height: baseTextRow.height
                                         spacing: window.s(10)
                                         
-                                        Text { font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(20); color: window.crust; text: icon }
+                                        Text { font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(20); color: window.text; text: icon }
                                         
                                         ColumnLayout {
                                             Layout.fillWidth: true
@@ -1956,7 +1956,7 @@ Item {
                                                     anchors.leftMargin: floatCard.textOffset
                                                     anchors.verticalCenter: parent.verticalCenter
                                                     text: floatCard.itemName
-                                                    font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(13); color: window.crust 
+                                                    font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(13); color: window.text 
                                                 }
                                                 Text { 
                                                     anchors.left: filledNameText.right
@@ -1964,11 +1964,11 @@ Item {
                                                     anchors.verticalCenter: parent.verticalCenter
                                                     visible: floatCard.doMarquee
                                                     text: floatCard.itemName
-                                                    font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(13); color: window.crust 
+                                                    font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(13); color: window.text 
                                                 }
                                             }
                                             Text {
-                                                font.family: "JetBrains Mono"; font.pixelSize: window.s(10); color: window.crust
+                                                font.family: "JetBrains Mono"; font.pixelSize: window.s(10); color: window.text
                                                 text: floatCard.isMyBusy ? "Connecting..." : (floatCard.renderFill > 0.1 && floatCard.renderFill < 1.0 ? "Hold..." : action)
                                             }
                                         }
@@ -2094,8 +2094,8 @@ Item {
                         RowLayout {
                             anchors.centerIn: parent
                             spacing: window.s(8)
-                            Text { font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18); color: window.activeMode === "eth" ? window.crust : window.text; text: "󰈀"; Behavior on color { ColorAnimation{duration:200} } }
-                            Text { font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: window.s(13); color: window.activeMode === "eth" ? window.crust : window.text; text: "Ethernet"; Behavior on color { ColorAnimation{duration:200} } }
+                            Text { font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18); color: window.activeMode === "eth" ? window.text : window.text; text: "󰈀"; Behavior on color { ColorAnimation{duration:200} } }
+                            Text { font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: window.s(13); color: window.activeMode === "eth" ? window.text : window.text; text: "Ethernet"; Behavior on color { ColorAnimation{duration:200} } }
                         }
                         MouseArea {
                             id: ethTabMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
@@ -2137,8 +2137,8 @@ Item {
                         RowLayout {
                             anchors.centerIn: parent
                             spacing: window.s(8)
-                            Text { font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18); color: window.activeMode === "wifi" ? window.crust : window.text; text: "󰤨"; Behavior on color { ColorAnimation{duration:200} } }
-                            Text { font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: window.s(13); color: window.activeMode === "wifi" ? window.crust : window.text; text: "Wi-Fi"; Behavior on color { ColorAnimation{duration:200} } }
+                            Text { font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18); color: window.activeMode === "wifi" ? window.text : window.text; text: "󰤨"; Behavior on color { ColorAnimation{duration:200} } }
+                            Text { font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: window.s(13); color: window.activeMode === "wifi" ? window.text : window.text; text: "Wi-Fi"; Behavior on color { ColorAnimation{duration:200} } }
                         }
                         MouseArea {
                             id: wifiTabMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
@@ -2179,8 +2179,8 @@ Item {
                         RowLayout {
                             anchors.centerIn: parent
                             spacing: window.s(8)
-                            Text { font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18); color: window.activeMode === "bt" ? window.crust : window.text; text: "󰂯"; Behavior on color { ColorAnimation{duration:200} } }
-                            Text { font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: window.s(13); color: window.activeMode === "bt" ? window.crust : window.text; text: "Bluetooth"; Behavior on color { ColorAnimation{duration:200} } }
+                            Text { font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18); color: window.activeMode === "bt" ? window.text : window.text; text: "󰂯"; Behavior on color { ColorAnimation{duration:200} } }
+                            Text { font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: window.s(13); color: window.activeMode === "bt" ? window.text : window.text; text: "Bluetooth"; Behavior on color { ColorAnimation{duration:200} } }
                         }
                         MouseArea {
                             id: btTabMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
@@ -2231,7 +2231,7 @@ Item {
                     gradient: Gradient {
                         orientation: Gradient.Vertical
                         GradientStop { position: 0.0; color: window.currentPower ? "transparent" : window.surface1 }
-                        GradientStop { position: 1.0; color: window.currentPower ? "transparent" : window.crust }
+                        GradientStop { position: 1.0; color: window.currentPower ? "transparent" : window.text }
                     }
 
                     border.color: window.currentPowerPending ? window.activeColor : (window.currentPower ? "transparent" : window.surface2)
@@ -2253,9 +2253,9 @@ Item {
                     Text {
                         id: pwrIcon
                         anchors.centerIn: parent
-                        font.family: "Iosevka Nerd Font"
+                        font.family: "JetBrainsMono Nerd Font"
                         font.pixelSize: window.currentPower ? window.s(22) : window.s(64)
-                        color: window.currentPower ? window.crust : window.text
+                        color: window.currentPower ? window.text : window.text
                         text: window.currentPowerPending ? "󰑮" : ""
                         Behavior on font.pixelSize { enabled: window.powerAnimAllowed; NumberAnimation { duration: 800; easing.type: Easing.InOutQuint } }
                         Behavior on color { enabled: window.powerAnimAllowed; ColorAnimation { duration: 800; easing.type: Easing.InOutQuint } }

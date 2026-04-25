@@ -35,9 +35,9 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
     
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
     readonly property color peach: _theme.peach
     readonly property color yellow: _theme.yellow
     readonly property color green: _theme.green
@@ -519,7 +519,7 @@ Item {
                 x: (parent.width / 2 - width / 2) + Math.cos(window.globalOrbitAngle * 2) * window.s(150)
                 y: (parent.height / 2 - height / 2) + Math.sin(window.globalOrbitAngle * 2) * window.s(100)
                 opacity: 0.015
-                color: window.mauve
+                color: window.teal
             }
             Rectangle {
                 width: parent.width * 1.1; height: width; radius: width / 2
@@ -565,7 +565,7 @@ Item {
                                 Behavior on opacity { NumberAnimation { duration: 350; easing.type: Easing.OutQuint } }
                                 Behavior on color { ColorAnimation { duration: 150 } }
                                 
-                                Text { anchors.centerIn: parent; font.family: "Iosevka Nerd Font"; text: "󰁍"; color: window.text; font.pixelSize: window.s(18) }
+                                Text { anchors.centerIn: parent; font.family: "JetBrainsMono Nerd Font"; text: "󰁍"; color: window.text; font.pixelSize: window.s(18) }
                                 MouseArea { 
                                     id: backMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; 
                                     onClicked: { 
@@ -591,7 +591,7 @@ Item {
                                 Behavior on opacity { NumberAnimation { duration: 350; easing.type: Easing.OutQuint } }
                                 Behavior on color { ColorAnimation { duration: 150 } }
                                 
-                                Text { anchors.centerIn: parent; font.family: "Iosevka Nerd Font"; text: "󰃭"; color: window.text; font.pixelSize: window.s(18) }
+                                Text { anchors.centerIn: parent; font.family: "JetBrainsMono Nerd Font"; text: "󰃭"; color: window.text; font.pixelSize: window.s(18) }
                                 MouseArea { 
                                     id: weekMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; 
                                     onClicked: window.isWeekView = true 
@@ -606,7 +606,7 @@ Item {
                             radius: window.s(20)
                             color: prevWeekMa.containsMouse ? window.surface0 : "transparent"
                             Behavior on color { ColorAnimation { duration: 150 } }
-                            Text { anchors.centerIn: parent; font.family: "Iosevka Nerd Font"; text: "󰅁"; color: window.text; font.pixelSize: window.s(18) }
+                            Text { anchors.centerIn: parent; font.family: "JetBrainsMono Nerd Font"; text: "󰅁"; color: window.text; font.pixelSize: window.s(18) }
                             MouseArea { id: prevWeekMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: changeDay(window.isWeekView ? -7 : -1) }
                         }
                     }                   
@@ -655,7 +655,7 @@ Item {
                         radius: window.s(20)
                         color: nextWeekMa.containsMouse ? window.surface0 : "transparent"
                         Behavior on color { ColorAnimation { duration: 150 } }
-                        Text { anchors.centerIn: parent; font.family: "Iosevka Nerd Font"; text: "󰅂"; color: window.text; font.pixelSize: window.s(18) }
+                        Text { anchors.centerIn: parent; font.family: "JetBrainsMono Nerd Font"; text: "󰅂"; color: window.text; font.pixelSize: window.s(18) }
                         MouseArea { id: nextWeekMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor; onClicked: changeDay(window.isWeekView ? 7 : 1) }
                     }
                 }
@@ -891,7 +891,7 @@ Item {
                                                     visible: model.isTarget
                                                     opacity: barMa.containsMouse ? 0.7 : 1.0
                                                     gradient: Gradient {
-                                                        GradientStop { position: 0.0; color: window.mauve }
+                                                        GradientStop { position: 0.0; color: window.teal }
                                                         GradientStop { position: 1.0; color: window.blue }
                                                     }
                                                 }
@@ -952,7 +952,7 @@ Item {
                                                 width: window.s(18) 
                                                 height: window.s(18) 
                                                 radius: window.s(4)
-                                                color: model.total === -1 ? "transparent" : (model.total === 0 ? window.surface0 : Qt.rgba(window.mauve.r, window.mauve.g, window.mauve.b, Math.min(1.0, 0.3 + 0.7 * (model.total / window.maxMonthTotal))))
+                                                color: model.total === -1 ? "transparent" : (model.total === 0 ? window.surface0 : Qt.rgba(window.teal.r, window.teal.g, window.teal.b, Math.min(1.0, 0.3 + 0.7 * (model.total / window.maxMonthTotal))))
                                                 Behavior on color { ColorAnimation { duration: 700; easing.type: Easing.OutQuint } }
 
                                                 border.color: model.isTarget ? window.text : "transparent"
@@ -1109,7 +1109,7 @@ Item {
                                                     radius: window.s(5)
                                                     gradient: Gradient {
                                                         orientation: Gradient.Horizontal
-                                                        GradientStop { position: 0.0; color: window.mauve }
+                                                        GradientStop { position: 0.0; color: window.teal }
                                                         GradientStop { position: 1.0; color: window.blue }
                                                     }
                                                     Behavior on width { 
@@ -1284,7 +1284,7 @@ Item {
                                                                 
                                                                 property real val: (window.weekHeatmapData[dayIndex] && window.weekHeatmapData[dayIndex][index]) ? window.weekHeatmapData[dayIndex][index] : 0
                                                                 property real intensity: Math.min(1.0, 0.2 + 0.8 * (val / Math.max(window.maxWeekHour, 1)))
-                                                                color: val === 0 ? window.surface0 : Qt.rgba(window.mauve.r, window.mauve.g, window.mauve.b, intensity)
+                                                                color: val === 0 ? window.surface0 : Qt.rgba(window.teal.r, window.teal.g, window.teal.b, intensity)
 
                                                                 // Staggered animated popup matrix effect for the heatmap cells
                                                                 scale: window.isWeekView ? 1.0 : 0.5
@@ -1510,7 +1510,7 @@ Item {
                                                 radius: window.s(5)
                                                 gradient: Gradient {
                                                     orientation: Gradient.Horizontal
-                                                    GradientStop { position: 0.0; color: window.mauve }
+                                                    GradientStop { position: 0.0; color: window.teal }
                                                     GradientStop { position: 1.0; color: window.blue }
                                                 }
                                                 Behavior on width { 

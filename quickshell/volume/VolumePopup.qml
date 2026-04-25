@@ -49,9 +49,9 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
     
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
     readonly property color maroon: _theme.maroon
     readonly property color peach: _theme.peach
     readonly property color yellow: _theme.yellow
@@ -70,8 +70,8 @@ Item {
 
     readonly property color tabColor: {
         if (activeTab === "outputs") return window.blue;
-        if (activeTab === "inputs") return window.mauve;
-        return window.green;
+        if (activeTab === "inputs") return window.teal;
+        return window.blue;
     }
     
     property real globalOrbitAngle: 0
@@ -293,7 +293,7 @@ Item {
                                 height: width
                                 radius: width / 2
                                 color: "transparent"
-                                border.color: window.activeMute ? window.red : window.tabColor
+                                border.color: window.activeMute ? window.teal : window.tabColor
                                 border.width: window.s(3)
                                 z: -2
 
@@ -320,7 +320,7 @@ Item {
                                 width: parent.width + window.s(40)
                                 height: width
                                 radius: width / 2
-                                color: window.activeMute ? window.red : window.tabColor
+                                color: window.activeMute ? window.teal : window.tabColor
                                 opacity: window.activeMute ? 0.3 : 0.15
                                 z: -1
                                 Behavior on color { ColorAnimation { duration: 300 } }
@@ -350,7 +350,7 @@ Item {
                                 anchors.fill: parent
                                 radius: width / 2
                                 color: window.base
-                                border.color: window.activeMute ? window.red : Qt.lighter(window.tabColor, 1.1)
+                                border.color: window.activeMute ? window.teal : Qt.lighter(window.tabColor, 1.1)
                                 border.width: 2
                                 clip: true
                                 Behavior on border.color { ColorAnimation { duration: 300 } }
@@ -412,8 +412,8 @@ Item {
                                         // Vibrant gradient matching the network orb
                                         var grad = ctx.createLinearGradient(0, 0, 0, height);
                                         if (window.activeMute) {
-                                            grad.addColorStop(0, Qt.lighter(window.red, 1.15).toString());
-                                            grad.addColorStop(1, window.red.toString());
+                                            grad.addColorStop(0, Qt.lighter(window.teal, 1.15).toString());
+                                            grad.addColorStop(1, window.teal.toString());
                                         } else {
                                             grad.addColorStop(0, Qt.lighter(window.tabColor, 1.15).toString());
                                             grad.addColorStop(1, window.tabColor.toString());
@@ -432,7 +432,7 @@ Item {
                                     font.family: "JetBrains Mono"
                                     font.weight: Font.Black
                                     font.pixelSize: window.s(32)
-                                    color: window.activeMute ? window.red : window.text
+                                    color: window.activeMute ? window.teal : window.text
                                     text: window.activeMute ? "MUTE" : window.activeVol + "%"
                                     Behavior on color { ColorAnimation { duration: 200 } }
                                 }
@@ -621,7 +621,7 @@ Item {
                                     anchors.centerIn: parent
                                     spacing: window.s(8)
                                     Text {
-                                        font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18)
+                                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18)
                                         color: window.activeTab === tabId ? window.crust : (tabMa.containsMouse ? window.text : window.subtext0)
                                         text: icon
                                         Behavior on color { ColorAnimation { duration: 200 } }
@@ -683,7 +683,7 @@ Item {
                             ColumnLayout {
                                 anchors.centerIn: parent
                                 spacing: window.s(10)
-                                Text { Layout.alignment: Qt.AlignHCenter; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(32); color: window.surface2; text: "󰖁" }
+                                Text { Layout.alignment: Qt.AlignHCenter; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(32); color: window.surface2; text: "󰖁" }
                                 Text { Layout.alignment: Qt.AlignHCenter; font.family: "JetBrains Mono"; font.pixelSize: window.s(14); color: window.overlay0; text: "No active streams" }
                             }
                         }
@@ -750,7 +750,7 @@ Item {
                                     spacing: window.s(12)
 
                                     Text {
-                                        font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(22)
+                                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(22)
                                         color: isActiveNode ? window.crust : window.text
                                         Behavior on color { ColorAnimation { duration: 200 } }
                                         text: {
@@ -795,7 +795,7 @@ Item {
 
                                         Text {
                                             anchors.centerIn: parent
-                                            font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18)
+                                            font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18)
                                             color: model.mute ? window.overlay0 : window.subtext0
                                             text: model.mute || model.volume === 0 ? "󰖁" : (model.volume > 50 ? "󰕾" : "󰖀")
                                             Behavior on color { ColorAnimation { duration: 200 } }

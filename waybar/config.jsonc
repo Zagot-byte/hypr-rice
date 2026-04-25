@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "left",
-    "width": 50,
+    "width": 20,
     "spacing": 0,
     "exclusive": true,
     "fixed-center": true,
@@ -44,21 +44,33 @@
         },
         "on-click": "activate"
     },
+    "width": 48,
     "clock": {
-        "format": "{:%H\n%M}",
-        "tooltip-format": "{:%A %d %B %Y}"
+        "format": "{:%H:%M}",
+        "on-click": "bash -c \"echo 'toggle:calendar' > /tmp/qs_widget_state\""
     },
     "network": {
-        "format-wifi": "󰤨",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰤭",
-        "tooltip-format-wifi": "{essid} {signalStrength}%",
-        "tooltip-format-disconnected": "Disconnected"
+"format-wifi": "󰤨",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤭",
+    "tooltip-format-wifi": "{essid} {signalStrength}%",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "echo 'toggle:network' > /tmp/qs_widget_state"
     },
     "bluetooth": {
-        "format": "󰂯",
-        "format-connected": "󰂱",
-        "format-disabled": "󰂲",
-        "tooltip-format-connected": "{device_alias}"
+    "format": "󰂯",
+    "format-connected": "󰂱",
+    "format-disabled": "󰂲",
+    "tooltip-format-connected": "{device_alias}",
+    "on-click": "echo 'toggle:network' > /tmp/qs_widget_state"
+    },"pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "echo 'toggle:volume' > /tmp/qs_widget_state",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     }
 }

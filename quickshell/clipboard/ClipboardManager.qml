@@ -29,7 +29,7 @@ Item {
     readonly property color surface0: _theme.surface0
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
-    readonly property color mauve: _theme.mauve || "#cba6f7"
+    readonly property color mauve: _theme.teal || "#cba6f7"
     readonly property color blue: _theme.blue
 
     property var allClips: []
@@ -79,7 +79,7 @@ Item {
     Process {
         id: clipFetcher
         running: true
-        command: ["python3", Quickshell.env("HOME") + "/.config/hypr/scripts/quickshell/clipboard/clip_fetcher.py", window.currentOffset, window.fetchLimit]
+        command: ["python3", Quickshell.env("HOME") + "/.config/quickshell/velora/clipboard/clip_fetcher.py", window.currentOffset, window.fetchLimit]
         
         stdout: StdioCollector {
             onStreamFinished: {
@@ -128,7 +128,7 @@ Item {
         if (isLoading || !hasMore) return;
         isLoading = true;
         currentOffset += fetchLimit;
-        clipFetcher.command = ["python3", Quickshell.env("HOME") + "/.config/hypr/scripts/quickshell/clipboard/clip_fetcher.py", window.currentOffset, window.fetchLimit];
+        clipFetcher.command = ["python3", Quickshell.env("HOME") + "/.config/quickshell/velora/clipboard/clip_fetcher.py", window.currentOffset, window.fetchLimit];
         clipFetcher.running = true;
     }
 
@@ -201,7 +201,7 @@ Item {
                 window.currentOffset = 0;
                 window.hasMore = true;
                 window.isLoading = true;
-                clipFetcher.command = ["python3", Quickshell.env("HOME") + "/.config/hypr/scripts/quickshell/clipboard/clip_fetcher.py", 0, window.fetchLimit];
+                clipFetcher.command = ["python3", Quickshell.env("HOME") + "/.config/quickshell/velora/clipboard/clip_fetcher.py", 0, window.fetchLimit];
                 clipFetcher.running = true;
             } else {
                 searchInput.text = "";
@@ -273,8 +273,8 @@ Item {
             width: parent.width * 0.8; height: width; radius: width / 2
             x: (parent.width / 2 - width / 2) + Math.cos(window.globalOrbitAngle * 2) * window.s(150)
             y: (parent.height / 2 - height / 2) + Math.sin(window.globalOrbitAngle * 2) * window.s(100)
-            opacity: 0.08
-            color: window.mauve
+            opacity: 0.03
+            color: Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.15)
             Behavior on color { ColorAnimation { duration: 1000 } }
         }
         
@@ -282,7 +282,7 @@ Item {
             width: parent.width * 0.9; height: width; radius: width / 2
             x: (parent.width / 2 - width / 2) + Math.sin(window.globalOrbitAngle * 1.5) * window.s(-150)
             y: (parent.height / 2 - height / 2) + Math.cos(window.globalOrbitAngle * 1.5) * window.s(-100)
-            opacity: 0.06
+            opacity: 0.02
             color: window.blue
             Behavior on color { ColorAnimation { duration: 1000 } }
         }
@@ -310,9 +310,9 @@ Item {
                         Text {
                             anchors.centerIn: parent
                             text: "󰅌"
-                            font.family: "Iosevka Nerd Font"
+                            font.family: "JetBrainsMono Nerd Font"
                             font.pixelSize: window.s(18)
-                            color: searchInput.activeFocus ? window.mauve : window.subtext0
+                            color: searchInput.activeFocus ? window.teal : window.subtext0
                             
                             opacity: !window.previewMode ? 1 : 0
                             scale: !window.previewMode ? 1 : 0.5
@@ -327,9 +327,9 @@ Item {
                         Text {
                             anchors.centerIn: parent
                             text: "󰈈"
-                            font.family: "Iosevka Nerd Font"
+                            font.family: "JetBrainsMono Nerd Font"
                             font.pixelSize: window.s(18)
-                            color: window.mauve
+                            color: Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.15)
                             
                             opacity: window.previewMode ? 1 : 0
                             scale: window.previewMode ? 1 : 0.5
@@ -555,7 +555,7 @@ Item {
                         width: clipList.cellWidth - window.s(10)
                         height: clipList.cellHeight - window.s(10)
                         radius: window.s(8)
-                        color: window.mauve
+                        color: Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.15)
 
                         property int curIdx: clipList.currentIndex
                         property real targetX: curIdx === -1 || clipList.model === null ? 0 : (curIdx % mainBg.cols) * clipList.cellWidth
@@ -606,7 +606,7 @@ Item {
                                 font.family: "JetBrains Mono"
                                 font.pixelSize: window.s(11)
                                 font.weight: Font.Bold
-                                color: index === clipList.currentIndex ? window.mauve : window.text
+                                color: index === clipList.currentIndex ? window.teal : window.text
                             }
                         }
 
@@ -697,7 +697,7 @@ Item {
             property real startH: clipList.cellHeight - window.s(10)
             
             color: window.crust
-            border.color: window.mauve
+            border.color: Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.15)
             border.width: window.previewMode ? window.s(2) : 0
             Behavior on border.width { NumberAnimation { duration: 150 } }
             clip: true
@@ -760,7 +760,7 @@ Item {
                     readOnly: true
                     selectByMouse: true
                     selectionColor: window.surface2
-                    selectedTextColor: window.mauve
+                    selectedTextColor: window.teal
                 }
             }
             

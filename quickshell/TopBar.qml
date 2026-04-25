@@ -611,7 +611,7 @@ Variants {
                             Text {
                                 anchors.centerIn: parent
                                 text: "󰋗"
-                                font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(22)
+                                font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(22)
                                 color: parent.isHovered ? mocha.teal : mocha.text
                                 Behavior on color { ColorAnimation { duration: 200 } }
                                 scale: parent.isHovered ? 1.15 : 1.0
@@ -636,7 +636,7 @@ Variants {
                             Text {
                                 anchors.centerIn: parent
                                 text: "󰍉"
-                                font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(22)
+                                font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(22)
                                 color: parent.isHovered ? mocha.blue : mocha.text
                                 Behavior on color { ColorAnimation { duration: 200 } }
                                 scale: parent.isHovered ? 1.15 : 1.0
@@ -661,7 +661,7 @@ Variants {
                             Text {
                                 anchors.centerIn: parent
                                 text: ""
-                                font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(22)
+                                font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(22)
                                 color: parent.isHovered ? mocha.blue : mocha.text
                                 Behavior on color { ColorAnimation { duration: 200 } }
                                 scale: parent.isHovered ? 1.15 : 1.0
@@ -715,7 +715,7 @@ Variants {
                             Text {
                                 anchors.centerIn: parent
                                 text: "󰚰"
-                                font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(22)
+                                font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(22)
                                 color: parent.isHovered ? mocha.text : mocha.green
                                 Behavior on color { ColorAnimation { duration: 200 } }
                                 
@@ -983,7 +983,7 @@ Variants {
                                     width: barWindow.s(24); height: barWindow.s(24); 
                                     anchors.verticalCenter: parent.verticalCenter
                                     Text { 
-                                        anchors.centerIn: parent; text: "󰒮"; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(26); 
+                                        anchors.centerIn: parent; text: "󰒮"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(26); 
                                         color: prevMouse.containsMouse ? mocha.text : mocha.overlay2; 
                                         Behavior on color { ColorAnimation { duration: 150 } }
                                         scale: prevMouse.containsMouse ? 1.1 : 1.0
@@ -995,7 +995,7 @@ Variants {
                                     width: barWindow.s(28); height: barWindow.s(28); 
                                     anchors.verticalCenter: parent.verticalCenter
                                     Text { 
-                                        anchors.centerIn: parent; text: barWindow.musicData.status === "Playing" ? "󰏤" : "󰐊"; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(30); 
+                                        anchors.centerIn: parent; text: barWindow.musicData.status === "Playing" ? "󰏤" : "󰐊"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(30); 
                                         color: playMouse.containsMouse ? mocha.green : mocha.text; 
                                         Behavior on color { ColorAnimation { duration: 150 } }
                                         scale: playMouse.containsMouse ? 1.15 : 1.0
@@ -1007,7 +1007,7 @@ Variants {
                                     width: barWindow.s(24); height: barWindow.s(24); 
                                     anchors.verticalCenter: parent.verticalCenter
                                     Text { 
-                                        anchors.centerIn: parent; text: "󰒭"; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(26); 
+                                        anchors.centerIn: parent; text: "󰒭"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(26); 
                                         color: nextMouse.containsMouse ? mocha.text : mocha.overlay2; 
                                         Behavior on color { ColorAnimation { duration: 150 } }
                                         scale: nextMouse.containsMouse ? 1.1 : 1.0
@@ -1081,7 +1081,7 @@ Variants {
                             Text { 
                                 text: barWindow.weatherIcon; 
                                 Layout.alignment: Qt.AlignVCenter;
-                                font.family: "Iosevka Nerd Font"; 
+                                font.family: "JetBrainsMono Nerd Font"; 
                                 font.pixelSize: barWindow.s(24); 
                                 color: Qt.tint(barWindow.weatherHex, Qt.rgba(mocha.mauve.r, mocha.mauve.g, mocha.mauve.b, 0.4)) 
                             }
@@ -1256,7 +1256,7 @@ Variants {
                                     anchors.left: parent.left
                                     anchors.leftMargin: barWindow.s(12)
                                     spacing: barWindow.s(8)
-                                    Text { anchors.verticalCenter: parent.verticalCenter; text: "󰌌"; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16); color: parent.parent.isHovered ? mocha.text : mocha.overlay2 }
+                                    Text { anchors.verticalCenter: parent.verticalCenter; text: "󰌌"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(16); color: parent.parent.isHovered ? mocha.text : mocha.overlay2 }
                                     Text { anchors.verticalCenter: parent.verticalCenter; text: barWindow.kbLayout; font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(13); font.weight: Font.Black; color: mocha.text }
                                 }
                                 MouseArea { id: kbMouse; anchors.fill: parent; hoverEnabled: true; onClicked: Quickshell.execDetached(["hyprctl", "switchxkblayout", "main", "next"]) }
@@ -1304,7 +1304,7 @@ Variants {
                                     Text { 
                                         anchors.verticalCenter: parent.verticalCenter; 
                                         text: barWindow.showEthernet ? "󰈀" : barWindow.wifiIcon;
-                                        font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16);
+                                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(16);
                                         color: barWindow.showEthernet ? (barWindow.ethStatus === "Connected" ? mocha.base : mocha.subtext0) : (barWindow.isWifiOn ? mocha.base : mocha.subtext0)
                                     }
                                     Text { 
@@ -1360,7 +1360,7 @@ Variants {
                                     anchors.left: parent.left
                                     anchors.leftMargin: barWindow.s(12)
                                     spacing: barWindow.s(8)
-                                    Text { anchors.verticalCenter: parent.verticalCenter; text: barWindow.btIcon; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16); color: barWindow.isBtOn ? mocha.base : mocha.subtext0 }
+                                    Text { anchors.verticalCenter: parent.verticalCenter; text: barWindow.btIcon; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(16); color: barWindow.isBtOn ? mocha.base : mocha.subtext0 }
                                     Text { 
                                         id: btText
                                         anchors.verticalCenter: parent.verticalCenter
@@ -1414,7 +1414,7 @@ Variants {
                                     spacing: barWindow.s(8)
                                     Text { 
                                         anchors.verticalCenter: parent.verticalCenter
-                                        text: barWindow.volIcon; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16); 
+                                        text: barWindow.volIcon; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.s(16); 
                                         color: barWindow.isSoundActive ? mocha.base : mocha.subtext0 
                                     }
                                     Text { 
@@ -1468,7 +1468,7 @@ Variants {
                                     Text { 
                                         anchors.verticalCenter: parent.verticalCenter
                                         text: barWindow.isDesktop ? "" : barWindow.batIcon; 
-                                        font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.isDesktop ? barWindow.s(18) : barWindow.s(16); 
+                                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: barWindow.isDesktop ? barWindow.s(18) : barWindow.s(16); 
                                         color: mocha.base 
                                         Behavior on color { ColorAnimation { duration: 300 } }
                                     }
@@ -1512,7 +1512,7 @@ Variants {
                             id: recIcon
                             anchors.centerIn: parent
                             text: "" 
-                            font.family: "Iosevka Nerd Font"
+                            font.family: "JetBrainsMono Nerd Font"
                             font.pixelSize: barWindow.s(20)
                             color: mocha.red
                             

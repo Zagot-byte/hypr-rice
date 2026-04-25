@@ -65,7 +65,7 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface0: _theme.surface0
     
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color pink: _theme.pink
     readonly property color blue: _theme.blue
     readonly property color sapphire: _theme.sapphire
@@ -73,7 +73,7 @@ Item {
     readonly property color yellow: _theme.yellow
     readonly property color teal: _theme.teal
     readonly property color green: _theme.green
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
 
     readonly property string scriptsDir: Quickshell.env("HOME") + "/.config/hypr/scripts/quickshell/calendar"
 
@@ -84,7 +84,7 @@ Item {
         let h = window.currentTime.getHours();
         if (h >= 5 && h < 12) return window.peach;      // Morning
         if (h >= 12 && h < 17) return window.sapphire;  // Afternoon
-        if (h >= 17 && h < 21) return window.mauve;     // Evening
+        if (h >= 17 && h < 21) return window.teal;     // Evening
         return window.blue;                             // Night
     }
 
@@ -93,7 +93,7 @@ Item {
         if (h >= 5 && h < 12) return window.yellow;     // Morning Accent
         if (h >= 12 && h < 17) return window.teal;      // Afternoon Accent
         if (h >= 17 && h < 21) return window.pink;      // Evening Accent
-        return window.mauve;                            // Night Accent
+        return window.teal;                            // Night Accent
     }
 
     readonly property color textAccent: Qt.tint(window.timeAccent, Qt.alpha(window.text, 0.35))
@@ -197,7 +197,7 @@ Item {
     // -------------------------------------------------------------------------
     property var weatherData: null
     property int weatherView: 0
-    property color activeWeatherHex: weatherData && weatherData.forecast && weatherData.forecast[weatherView] ? weatherData.forecast[weatherView].hex : window.mauve
+    property color activeWeatherHex: weatherData && weatherData.forecast && weatherData.forecast[weatherView] ? weatherData.forecast[weatherView].hex : window.teal
 
     // Transition Properties
     property int targetWeatherView: 0
@@ -228,7 +228,7 @@ Item {
         if (!isTempAnimating || !window.startupComplete) return window.text;
         
         // If the target is higher than the currently ticking number, we are counting up
-        if (window.targetTemp > window.displayedTemp) return window.red;
+        if (window.targetTemp > window.displayedTemp) return window.teal;
         
         // If the target is lower than the currently ticking number, we are counting down
         if (window.targetTemp < window.displayedTemp) return window.blue;
@@ -512,7 +512,7 @@ Item {
                 anchors.centerIn: parent
                 anchors.verticalCenterOffset: window.centerOffset
                 text: window.weatherData && window.weatherData.forecast[window.weatherView] ? window.weatherData.forecast[window.weatherView].icon : ""
-                font.family: "Iosevka Nerd Font"
+                font.family: "JetBrainsMono Nerd Font"
                 font.pixelSize: window.s(800)
                 color: window.activeWeatherHex
                 opacity: (0.03 + (0.01 * Math.sin(window.globalOrbitAngle * 4))) * window.introAmbient * window.weatherContentOpacity
@@ -730,7 +730,7 @@ Item {
                                     Text { 
                                         Layout.alignment: Qt.AlignHCenter
                                         text: modelData.icon || (window.weatherData && window.weatherData.forecast[window.weatherView] ? window.weatherData.forecast[window.weatherView].icon : "")
-                                        font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18)
+                                        font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18)
                                         color: isHighlighted ? window.base : (modelData.hex || window.text)
                                         
                                         transform: Translate { y: hrMa.containsMouse ? window.s(-3) : 0 }
@@ -786,7 +786,7 @@ Item {
                             opacity: window.targetMonthOffset !== 0 ? 1.0 : 0.0
                             visible: opacity > 0
                             Behavior on opacity { NumberAnimation { duration: 200 } }
-                            Text { anchors.centerIn: parent; text: "󰃭"; font.family: "Iosevka Nerd Font"; color: window.text; font.pixelSize: window.s(16) }
+                            Text { anchors.centerIn: parent; text: "󰃭"; font.family: "JetBrainsMono Nerd Font"; color: window.text; font.pixelSize: window.s(16) }
                             MouseArea { 
                                 id: homeMa; anchors.fill: parent; hoverEnabled: window.targetMonthOffset !== 0; 
                                 onClicked: if (window.targetMonthOffset !== 0) window.setMonthOffset(0) 
@@ -796,7 +796,7 @@ Item {
                         Rectangle {
                             width: window.s(32); height: window.s(32); radius: window.s(16)
                             color: prevMa.containsMouse ? window.surface1 : "transparent"
-                            Text { anchors.centerIn: parent; text: ""; font.family: "Iosevka Nerd Font"; color: window.text; font.pixelSize: window.s(16) }
+                            Text { anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; color: window.text; font.pixelSize: window.s(16) }
                             MouseArea { id: prevMa; anchors.fill: parent; hoverEnabled: true; onClicked: window.setMonthOffset(window.targetMonthOffset - 1) }
                         }
                         
@@ -816,14 +816,14 @@ Item {
                         Rectangle {
                             width: window.s(32); height: window.s(32); radius: window.s(16)
                             color: nextMa.containsMouse ? window.surface1 : "transparent"
-                            Text { anchors.centerIn: parent; text: ""; font.family: "Iosevka Nerd Font"; color: window.text; font.pixelSize: window.s(16) }
+                            Text { anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; color: window.text; font.pixelSize: window.s(16) }
                             MouseArea { id: nextMa; anchors.fill: parent; hoverEnabled: true; onClicked: window.setMonthOffset(window.targetMonthOffset + 1) }
                         }
 
                         Rectangle {
                             width: window.s(32); height: window.s(32); radius: window.s(16)
                             color: diaryMa.containsMouse ? window.surface1 : "transparent"
-                            Text { anchors.centerIn: parent; text: "+"; font.family: "Iosevka Nerd Font"; color: diaryMa.containsMouse ? window.mauve : window.text; font.pixelSize: window.s(32) }
+                            Text { anchors.centerIn: parent; text: "+"; font.family: "JetBrainsMono Nerd Font"; color: diaryMa.containsMouse ? window.teal : window.text; font.pixelSize: window.s(32) }
                             MouseArea { 
                                 id: diaryMa; anchors.fill: parent; hoverEnabled: true; 
                                 onClicked: Quickshell.execDetached(["bash", window.scriptsDir + "/diary_manager.sh"]) 
@@ -924,7 +924,7 @@ Item {
                             }
                             
                             Text { 
-                                anchors.centerIn: parent; text: ""; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18)
+                                anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18)
                                 color: parent.containsMouse ? window.textAccent : window.overlay1
                                 transform: Translate { x: parent.containsMouse ? window.s(-5) : wPrevMa.pulseOffset }
                                 Behavior on transform { NumberAnimation { duration: 250; easing.type: Easing.OutBack } }
@@ -953,7 +953,7 @@ Item {
                             }
                             
                             Text { 
-                                anchors.centerIn: parent; text: ""; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18)
+                                anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18)
                                 color: parent.containsMouse ? window.textAccent : window.overlay1
                                 transform: Translate { x: parent.containsMouse ? window.s(5) : wNextMa.pulseOffset }
                                 Behavior on transform { NumberAnimation { duration: 250; easing.type: Easing.OutBack } }
@@ -1104,7 +1104,7 @@ Item {
                                     
                                     Text { 
                                         text: gaugeWrapper.gaugeIcon
-                                        font.family: "Iosevka Nerd Font"
+                                        font.family: "JetBrainsMono Nerd Font"
                                         font.pixelSize: window.s(14)
                                         color: gaugeMa.containsMouse ? window.textAccent : window.overlay0
                                         Behavior on color { ColorAnimation { duration: 200 } }
@@ -1179,7 +1179,7 @@ Item {
                             for(var i = 0; i <= width + window.s(20); i += window.s(10)) {
                                 ctx.lineTo(i, cy + Math.sin(i/window.s(100)) * window.s(30));
                             }
-                            ctx.strokeStyle = window.mauve;
+                            ctx.strokeStyle = window.teal;
                             ctx.lineWidth = window.s(2);
                             ctx.stroke();
                         }
@@ -1247,7 +1247,7 @@ Item {
                         
                         Rectangle {
                             width: window.s(40); height: window.s(40); radius: window.s(20); color: window.surface0
-                            Text { anchors.centerIn: parent; text: ""; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(18); color: window.textAccent }
+                            Text { anchors.centerIn: parent; text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(18); color: window.textAccent }
                         }
                         
                         Text { 
@@ -1262,15 +1262,15 @@ Item {
                         
                         Rectangle {
                             width: window.s(120); height: window.s(36); radius: window.s(10)
-                            color: schLinkMa.containsMouse ? window.mauve : Qt.alpha(window.surface1, 0.5)
-                            border.color: window.mauve; border.width: 1
+                            color: schLinkMa.containsMouse ? window.teal : Qt.alpha(window.surface1, 0.5)
+                            border.color: window.teal; border.width: 1
                             Behavior on color { ColorAnimation { duration: 150 } }
                             
                             RowLayout {
                                 anchors.centerIn: parent
                                 spacing: window.s(6)
                                 Text { text: "Open Web"; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(14); color: schLinkMa.containsMouse ? window.base : window.text }
-                                Text { text: ""; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(14); color: schLinkMa.containsMouse ? window.base : window.text }
+                                Text { text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(14); color: schLinkMa.containsMouse ? window.base : window.text }
                             }
                             
                             MouseArea {
@@ -1367,7 +1367,7 @@ Item {
                                                     ctx.lineTo(width, height);
                                                     ctx.lineTo(0, height);
                                                     var grad = ctx.createLinearGradient(0, 0, width, 0);
-                                                    grad.addColorStop(0, window.mauve);
+                                                    grad.addColorStop(0, window.teal);
                                                     grad.addColorStop(1, "transparent");
                                                     ctx.fillStyle = grad;
                                                     ctx.fill();
@@ -1381,7 +1381,7 @@ Item {
                                                 anchors.top: parent.top
                                                 anchors.bottom: parent.bottom
                                                 radius: window.s(2)
-                                                color: classNode.isActive ? window.mauve : (classNode.isPast ? window.surface1 : window.surface2)
+                                                color: classNode.isActive ? window.teal : (classNode.isPast ? window.surface1 : window.surface2)
                                                 Behavior on width { NumberAnimation { duration: 200; easing.type: Easing.OutBack } }
                                                 Behavior on color { ColorAnimation { duration: 200 } }
                                             }
@@ -1399,7 +1399,7 @@ Item {
                                                     font.family: "JetBrains Mono"
                                                     font.weight: Font.Black
                                                     font.pixelSize: window.s(16)
-                                                    color: classNode.isActive ? window.mauve : (classNode.isPast ? window.overlay0 : window.text)
+                                                    color: classNode.isActive ? window.teal : (classNode.isPast ? window.overlay0 : window.text)
                                                     elide: Text.ElideRight
                                                     Layout.fillWidth: true
                                                 }
@@ -1407,14 +1407,14 @@ Item {
                                                 RowLayout {
                                                     visible: !modelData.is_compact
                                                     spacing: window.s(8)
-                                                    Text { text: "󰅐"; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(14); color: classNode.isActive ? window.mauve : window.overlay1 }
+                                                    Text { text: "󰅐"; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(14); color: classNode.isActive ? window.teal : window.overlay1 }
                                                     Text { text: modelData.time || ""; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(14); color: classNode.isActive ? window.text : window.overlay1 }
                                                 }
 
                                                 RowLayout {
                                                     visible: !modelData.is_compact && (modelData.room || "") !== ""
                                                     spacing: window.s(8)
-                                                    Text { text: ""; font.family: "Iosevka Nerd Font"; font.pixelSize: window.s(14); color: classNode.isPast ? window.surface2 : window.peach }
+                                                    Text { text: ""; font.family: "JetBrainsMono Nerd Font"; font.pixelSize: window.s(14); color: classNode.isPast ? window.surface2 : window.peach }
                                                     Text { text: modelData.room || ""; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: window.s(14); color: window.subtext1; elide: Text.ElideRight; Layout.fillWidth: true }
                                                 }
                                             }
@@ -1431,7 +1431,7 @@ Item {
                                                 anchors.left: parent.left
                                                 anchors.right: parent.right
                                                 height: gapMa.containsMouse ? window.s(4) : window.s(2)
-                                                color: gapMa.containsMouse ? window.mauve : "transparent"
+                                                color: gapMa.containsMouse ? window.teal : "transparent"
                                                 Behavior on height { NumberAnimation { duration: 150; easing.type: Easing.OutBack } }
                                                 Behavior on color { ColorAnimation { duration: 150 } }
                                             }
@@ -1456,7 +1456,7 @@ Item {
                                                     font.family: "JetBrains Mono"
                                                     font.weight: Font.Bold
                                                     font.pixelSize: window.s(14)
-                                                    color: window.mauve
+                                                    color: window.teal
                                                 }
                                             }
 

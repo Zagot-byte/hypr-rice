@@ -40,14 +40,14 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
     
-    readonly property color mauve: _theme.mauve
+    readonly property color mauve: _theme.teal
     readonly property color blue: _theme.blue
     readonly property color pink: _theme.pink
     readonly property color teal: _theme.teal
     readonly property color yellow: _theme.yellow
     readonly property color peach: _theme.peach
     readonly property color green: _theme.green
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
     readonly property color sapphire: _theme.sapphire
 
     // -------------------------------------------------------------------------
@@ -67,17 +67,17 @@ Item {
     
     property var resList: [
         {w: 3840, h: 2160, l: "4K",   accent: window.pink}, 
-        {w: 2560, h: 1440, l: "QHD",  accent: window.mauve},
-        {w: 1920, h: 1080, l: "FHD",  accent: window.blue},
+        {w: 2560, h: 1440, l: "QHD",  accent: window.teal},
+        {w: 1920, h: 1080, l: "FHD",  accent: window.teal},
         {w: 1600, h: 900,  l: "HD+",  accent: window.teal}, 
         {w: 1366, h: 768,  l: "WXGA", accent: window.yellow}, 
         {w: 1280, h: 720,  l: "HD",   accent: window.peach}, 
         {w: 1024, h: 768,  l: "XGA",  accent: window.green}, 
-        {w: 800,  h: 600,  l: "SVGA", accent: window.red} 
+        {w: 800,  h: 600,  l: "SVGA", accent: window.teal} 
     ]
 
-    property color selectedResAccent: window.mauve
-    property color selectedRateAccent: window.blue
+    property color selectedResAccent: window.teal
+    property color selectedRateAccent: window.teal
 
     property int currentTransform: monitorsModel.count > 0 ? monitorsModel.get(window.activeEditIndex).transform : 0
     property bool currentIsPortrait: currentTransform === 1 || currentTransform === 3
@@ -702,7 +702,7 @@ Item {
 
                                         Text { 
                                             Layout.alignment: Qt.AlignHCenter
-                                            font.family: "Iosevka Nerd Font"
+                                            font.family: "JetBrainsMono Nerd Font"
                                             font.pixelSize: window.s(38)
                                             color: window.selectedResAccent
                                             text: "󰍹"
@@ -876,7 +876,7 @@ Item {
 
                                                 Text { 
                                                     Layout.alignment: Qt.AlignHCenter
-                                                    font.family: "Iosevka Nerd Font"
+                                                    font.family: "JetBrainsMono Nerd Font"
                                                     font.pixelSize: 32
                                                     color: isActive ? window.selectedResAccent : window.text
                                                     text: "󰍹"
@@ -1238,7 +1238,7 @@ Item {
                         Layout.rightMargin: window.s(6)
                         
                         property var rates: [60, 75, 100, 120, 144, 165, 180, 240, 360]
-                        property var rateColors: [window.red, window.mauve, window.blue, window.sapphire, window.teal, window.pink, window.yellow, window.green, window.peach]
+                        property var rateColors: [window.teal, window.teal, window.teal, window.sapphire, window.teal, window.pink, window.yellow, window.green, window.peach]
                         
                         property int currentIndex: {
                             if (monitorsModel.count === 0) return 0;
@@ -1430,7 +1430,7 @@ Item {
                                 spacing: window.s(8)
                                 
                                 Text { 
-                                    font.family: "Iosevka Nerd Font"
+                                    font.family: "JetBrainsMono Nerd Font"
                                     font.pixelSize: window.s(20)
                                     color: window.crust
                                     text: "󰸵" 

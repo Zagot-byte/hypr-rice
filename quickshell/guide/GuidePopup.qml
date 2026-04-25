@@ -140,41 +140,7 @@ Item {
     property string remoteVersion: ""
     property bool updateAvailable: false
 
-    onDotsVersionChanged: {
-        if (remoteVersion !== "" && dotsVersion !== "Loading...") {
-            updateAvailable = compareVersions(dotsVersion, remoteVersion);
-        }
-    }
-
-    onRemoteVersionChanged: {
-        if (remoteVersion !== "" && dotsVersion !== "Loading...") {
-            updateAvailable = compareVersions(dotsVersion, remoteVersion);
-        }
-    }
-
-    Process {
-        id: versionReader
-        command: ["bash", "-c", "source ~/.local/state/imperative-dots-version 2>/dev/null && echo $LOCAL_VERSION || echo 'Unknown'"]
-        running: true
-        stdout: StdioCollector {
-            onStreamFinished: {
-                let out = this.text ? this.text.trim() : "";
-                if (out !== "") root.dotsVersion = out;
-            }
-        }
-    }
-
-    Process {
-        id: updateChecker
-        command: ["bash", "-c", "curl -m 5 -s https://raw.githubusercontent.com/ilyamiro/imperative-dots/master/install.sh | grep '^DOTS_VERSION=' | cut -d'\"' -f2"]
-        running: true
-        stdout: StdioCollector {
-            onStreamFinished: {
-                let out = this.text ? this.text.trim() : "";
-                if (out !== "") root.remoteVersion = out;
-            }
-        }
-    }
+    
 
     // -------------------------------------------------------------------------
     // SYSTEM INFO PROPERTIES & FETCHER (CACHED)
@@ -837,14 +803,12 @@ Item {
 
                 ListModel {
                     id: systemDataModel
-                    ListElement { pkg: "Hyprland"; role: "Wayland Compositor"; icon: ""; clr: "blue"; link: "https://hyprland.org/" }
-                    ListElement { pkg: "Quickshell"; role: "UI Framework"; icon: "󰣆"; clr: "mauve"; link: "https://git.outfoxxed.me/outfoxxed/quickshell" }
-                    ListElement { pkg: "Matugen"; role: "Theme Engine"; icon: "󰏘"; clr: "peach"; link: "https://github.com/InioX/matugen" }
-                    ListElement { pkg: "Rofi Wayland"; role: "App Launcher"; icon: ""; clr: "green"; link: "https://github.com/lbonn/rofi" }
-                    ListElement { pkg: "Kitty"; role: "Terminal Emulator"; icon: "󰄛"; clr: "yellow"; link: "https://sw.kovidgoyal.net/kitty/" }
-                    ListElement { pkg: "SwayOSD / NC"; role: "Overlays & Notifs"; icon: "󰂚"; clr: "pink"; link: "https://github.com/ErikReider/SwayOSD" }
-                }
-
+                    ListElement { pkg: "Hyprland"; role: "Wayland Compositor"; icon: ""; clr: "blue"; link: "https://hyprland.org/" }
+ListElement { pkg: "Quickshell"; role: "UI Framework"; icon: "󰣆"; clr: "teal"; link: "https://git.outfoxxed.me/outfoxxed/quickshell" }
+ListElement { pkg: "Waybar"; role: "Status Bar"; icon: "󰕮"; clr: "green"; link: "https://github.com/Alexays/Waybar" }
+ListElement { pkg: "Kitty"; role: "Terminal Emulator"; icon: "󰄛"; clr: "yellow"; link: "https://sw.kovidgoyal.net/kitty/" }
+ListElement { pkg: "Fish"; role: "Shell"; icon: ""; clr: "blue"; link: "https://fishshell.com/" }
+ListElement { pkg: "Kanagawa Dragon"; role: "Color Palette"; icon: "󰏘"; clr: "red"; link: "https://github.com/rebelot/kanagawa.nvim" }
                 ColumnLayout {
                     anchors.fill: parent
                     anchors.topMargin: root.s(15)

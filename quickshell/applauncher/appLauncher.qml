@@ -37,9 +37,9 @@ Item {
     readonly property color surface1: _theme.surface1
     readonly property color surface2: _theme.surface2
     
-    readonly property color mauve: _theme.mauve || "#cba6f7"
+    readonly property color mauve: _theme.teal || "#cba6f7"
     readonly property color pink: _theme.pink
-    readonly property color red: _theme.red
+    readonly property color red: _theme.teal
     readonly property color maroon: _theme.maroon
     readonly property color peach: _theme.peach
     readonly property color yellow: _theme.yellow
@@ -56,7 +56,7 @@ Item {
     Process {
         id: appFetcher
         running: true
-        command: ["bash", "-c", "python3 " + Quickshell.env("HOME") + "/.config/hypr/scripts/quickshell/applauncher/app_fetcher.py"]
+        command: ["bash", "-c", "python3 " + Quickshell.env("HOME") + "/.config/quickshell/velora/applauncher/app_fetcher.py"]
         
         stdout: StdioCollector {
             onStreamFinished: {
@@ -221,7 +221,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
 
         radius: window.s(16)
-        color: Qt.rgba(window.base.r, window.base.g, window.base.b, 1.0)
+        color: Qt.rgba(window.base.r, window.base.g, window.base.b, 0.95)
         border.color: window.surface1
         border.width: 1
         clip: true
@@ -234,8 +234,8 @@ Item {
             width: parent.width * 0.8; height: width; radius: width / 2
             x: (parent.width / 2 - width / 2) + Math.cos(window.globalOrbitAngle * 2) * window.s(150)
             y: (parent.height / 2 - height / 2) + Math.sin(window.globalOrbitAngle * 2) * window.s(100)
-            opacity: 0.08
-            color: window.mauve
+            opacity: 0.03
+            color: window.teal
             Behavior on color { ColorAnimation { duration: 1000 } }
         }
         
@@ -243,7 +243,7 @@ Item {
             width: parent.width * 0.9; height: width; radius: width / 2
             x: (parent.width / 2 - width / 2) + Math.sin(window.globalOrbitAngle * 1.5) * window.s(-150)
             y: (parent.height / 2 - height / 2) + Math.cos(window.globalOrbitAngle * 1.5) * window.s(-100)
-            opacity: 0.06
+            opacity: 0.02
             color: window.blue
             Behavior on color { ColorAnimation { duration: 1000 } }
         }
@@ -267,9 +267,9 @@ Item {
 
                     Text {
                         text: ""
-                        font.family: "Iosevka Nerd Font"
+                        font.family: "JetBrainsMono Nerd Font"
                         font.pixelSize: window.s(18)
-                        color: searchInput.activeFocus ? window.mauve : window.subtext0
+                        color: searchInput.activeFocus ? window.teal : window.subtext0
                         Behavior on color { ColorAnimation { duration: 150 } }
                     }
 
@@ -400,7 +400,7 @@ Item {
                         x: 0
                         width: appList.width
                         radius: window.s(8)
-                        color: window.mauve
+                        color: Qt.rgba(window.teal.r, window.teal.g, window.teal.b, 0.15)
 
                         property int prevIdx: 0
                         property int curIdx: appList.currentIndex
@@ -505,8 +505,8 @@ Item {
                                     anchors.fill: parent
                                     radius: window.s(12) 
                                     
-                                    color: window.mauve
-                                    opacity: index === appList.currentIndex ? 0.25 : 0.08 
+                                    color: window.teal
+                                    opacity: index === appList.currentIndex ? 0.08 : 0.03 
                                     
                                     Behavior on opacity { 
                                         NumberAnimation { duration: 300; easing.type: Easing.OutExpo } 
@@ -520,7 +520,7 @@ Item {
                                 font.family: "JetBrains Mono"
                                 font.pixelSize: window.s(14)
                                 font.weight: index === appList.currentIndex ? Font.Bold : Font.Medium
-                                color: index === appList.currentIndex ? window.crust : window.text
+                                color: index === appList.currentIndex ? window.text : window.subtext0
                                 elide: Text.ElideRight
                                 verticalAlignment: Text.AlignVCenter
                                 

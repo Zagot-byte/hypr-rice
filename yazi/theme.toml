@@ -1,11 +1,81 @@
-# Yazi — Kanagawa Dragon theme
-# TODO: fill in full theme — placeholder
 [manager]
 cwd = { fg = "#c4746e" }
+
+hovered         = { fg = "#181616", bg = "#8a9a7b" }
+preview_hovered = { underline = true }
+
+find_keyword  = { fg = "#c4b28a", bold = true }
+find_position = { fg = "#c4746e", bg = "reset", bold = true }
+
+marker_selected = { fg = "#8a9a7b", bg = "#8a9a7b" }
+marker_copied   = { fg = "#c4b28a", bg = "#c4b28a" }
+marker_cut      = { fg = "#c4746e", bg = "#c4746e" }
+
+tab_active   = { fg = "#181616", bg = "#8ea4a2" }
+tab_inactive = { fg = "#9e9b93", bg = "#282727" }
+tab_width    = 1
+
+border_symbol = "│"
+border_style  = { fg = "#625e5a" }
 
 [status]
 separator_open  = ""
 separator_close = ""
 
+overall_progress = { fg = "#181616", bg = "#8a9a7b" }
+current_progress = { fg = "#181616", bg = "#7fb4ca" }
+
+permissions_t = { fg = "#8a9a7b" }
+permissions_r = { fg = "#c4b28a" }
+permissions_w = { fg = "#c4746e" }
+permissions_x = { fg = "#8ea4a2" }
+permissions_s = { fg = "#625e5a" }
+
+[input]
+border   = { fg = "#8ea4a2" }
+title    = { fg = "#8ea4a2" }
+value    = { fg = "#c5c9c5" }
+selected = { reversed = true }
+
+[select]
+border   = { fg = "#8a9a7b" }
+active   = { fg = "#c4746e" }
+inactive = { fg = "#625e5a" }
+
+[tasks]
+border  = { fg = "#8ea4a2" }
+title   = { fg = "#8ea4a2" }
+hovered = { underline = true }
+
+[which]
+mask            = { bg = "#1d1c19" }
+cand            = { fg = "#8ea4a2" }
+rest            = { fg = "#625e5a" }
+desc            = { fg = "#9e9b93" }
+separator       = "  "
+separator_style = { fg = "#282727" }
+
+[notify]
+title_info  = { fg = "#8a9a7b" }
+title_warn  = { fg = "#c4b28a" }
+title_error = { fg = "#c4746e" }
+
 [filetype]
-rules = []
+rules = [
+    { mime = "image/*",     fg = "#8ea4a2" },
+    { mime = "video/*",     fg = "#c4b28a" },
+    { mime = "audio/*",     fg = "#c4b28a" },
+    { mime = "application/zip",    fg = "#c4746e" },
+    { mime = "application/x-tar", fg = "#c4746e" },
+    { mime = "text/*",      fg = "#8a9a7b" },
+    { name = "*.toml",      fg = "#c4b28a" },
+    { name = "*.json",      fg = "#c4b28a" },
+    { name = "*.md",        fg = "#7fb4ca" },
+    { name = "*.py",        fg = "#7fb4ca" },
+    { name = "*.sh",        fg = "#8a9a7b" },
+    { name = "*.rs",        fg = "#c4746e" },
+    { name = "*.js",        fg = "#c4b28a" },
+    { name = "*.ts",        fg = "#7fb4ca" },
+    { name = "*.html",      fg = "#c4746e" },
+    { name = "*.css",       fg = "#7fb4ca" },
+]

@@ -37,7 +37,7 @@ Item {
     readonly property color green: _theme.green
     
     // Added for background blobs
-    readonly property color mauve: _theme.mauve || "#cba6f7"
+    readonly property color mauve: _theme.teal || "#cba6f7"
     readonly property color blue: _theme.blue || "#89b4fa"
 
     // -------------------------------------------------------------------------
@@ -227,7 +227,7 @@ except Exception as e:
             x: (parent.width / 2 - width / 2) + Math.cos(window.globalOrbitAngle * 2) * window.s(150)
             y: (parent.height / 2 - height / 2) + Math.sin(window.globalOrbitAngle * 2) * window.s(100)
             opacity: 0.08
-            color: window.mauve
+            color: window.teal
             Behavior on color { ColorAnimation { duration: 1000 } }
         }
         
@@ -269,7 +269,7 @@ except Exception as e:
                 Text { 
                     id: arrowIcon
                     text: ""
-                    font.family: "Iosevka Nerd Font"
+                    font.family: "JetBrainsMono Nerd Font"
                     font.pixelSize: window.s(22)
                     color: window.surface2 
                     anchors.verticalCenter: parent.verticalCenter
@@ -512,7 +512,7 @@ except Exception as e:
                     
                     Text { 
                         text: "󰚰"
-                        font.family: "Iosevka Nerd Font"
+                        font.family: "JetBrainsMono Nerd Font"
                         font.pixelSize: window.s(18)
                         color: updateBtn.fillLevel > 0.5 ? window.crust : window.green 
                         Behavior on color { ColorAnimation { duration: 150 } }

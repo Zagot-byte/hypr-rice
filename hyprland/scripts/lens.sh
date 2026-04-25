@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-grim -g "$(slurp)" /tmp/image.png
-imageLink=$(curl -sF files[]=@/tmp/image.png 'https://uguu.se/upload' | jq -r '.files[0].url')
-xdg-open "https://lens.google.com/uploadbyurl?url=${imageLink}"
-rm /tmp/image.png
+# ── Screenshot to Google Lens ────────────────────────
+tmp="/tmp/lens-$(date +%s).png"
+grim -g "$(slurp)" "$tmp" && \
+    brave --new-window "https://lens.google.com/upload?ep=ccm&s=&st=$(date +%s)" &
+sleep 1
+xdg-open "$tmp" 2>/dev/null || \
+    brave "https://lens.google.com/"
