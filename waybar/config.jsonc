@@ -11,7 +11,8 @@
 
     "modules-left": [
         "cpu",
-        "memory"
+        "memory",
+        "mpris"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -48,6 +49,19 @@
     "clock": {
         "format": "{:%H:%M}",
         "on-click": "bash -c \"echo 'toggle:calendar' > /tmp/qs_widget_state\""
+    },
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "max-length": 30,
+        "on-click": "bash -c \"echo 'toggle:music' > /tmp/qs_widget_state\""
     },
     "network": {
 "format-wifi": "󰤨",
