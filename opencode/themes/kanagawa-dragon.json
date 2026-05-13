@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "bg": "#181616",
+    "bg2": "#1d1c19",
+    "fg": "#c5c9c5",
+    "red": "#c4746e",
+    "green": "#8a9a7b",
+    "yellow": "#c4b28a",
+    "blue": "#8ba4b0",
+    "purple": "#a292a3",
+    "cyan": "#8ea4a2",
+    "gray": "#625e5a"
+  },
+  "theme": {
+    "primary": { "dark": "cyan", "light": "blue" },
+    "secondary": { "dark": "blue", "light": "cyan" },
+    "accent": { "dark": "red", "light": "red" },
+    "error": { "dark": "red", "light": "red" },
+    "warning": { "dark": "yellow", "light": "yellow" },
+    "success": { "dark": "green", "light": "green" },
+    "info": { "dark": "cyan", "light": "blue" },
+    "text": { "dark": "fg", "light": "bg" },
+    "textMuted": { "dark": "gray", "light": "gray" },
+    "background": { "dark": "bg", "light": "fg" },
+    "backgroundPanel": { "dark": "bg2", "light": "fg" }
+  }
+}

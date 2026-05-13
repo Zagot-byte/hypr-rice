@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "local": {
+      "name": "local",
+      "type": "openai",
+      "baseURL": "http://localhost:11434/v1",
+      "apiKey": "none",
+      "models": {
+        "gemma4-gpu": {
+          "name": "gemma4-gpu"
+        },
+        "qwen32b": {
+          "name": "qwen32b"
+        }
+      }
+    }
+  },
+  "model": "local/gemma4-gpu",
+  "autoupdate": true
+}
